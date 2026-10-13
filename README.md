@@ -91,6 +91,16 @@ Every push to `main` republishes the site. No workflow or build job is involved.
 - Some questions intentionally list only a reason for the options that are genuinely
   plausible distractors; those cards do not cover all three wrong options.
 
+## Additional practice resources
+
+Third-party question banks, listed here for extra drilling alongside this one:
+
+- [ExamTopics — DP-750 practice questions](https://www.examtopics.com/exams/microsoft/dp-750/view/)
+- [EduDump — DP-750 exam questions](https://www.edudump.com/exams/Microsoft/DP-750/view/)
+
+These are community-run sites with their own content and accuracy, unconnected to this
+project and to Microsoft.
+
 ## Disclaimer
 
 This is an independent study aid. It is **not** affiliated with, endorsed by, or sponsored by
