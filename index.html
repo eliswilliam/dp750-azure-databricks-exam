@@ -1,0 +1,2036 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen Azure Databricks Data Engineer - 75 Questions Clés en Main</title>
+    <link rel="alternate" hreflang="fr" href="https://eliswilliam.github.io/dp750-azure-databricks-exam/">
+    <link rel="alternate" hreflang="pt" href="https://eliswilliam.github.io/dp750-azure-databricks-exam/pt.html">
+    <link rel="alternate" hreflang="x-default" href="https://eliswilliam.github.io/dp750-azure-databricks-exam/">
+    <style>
+        :root {
+            --primary-color: #0078d4;
+            --text-color: #242424;
+            --bg-color: #f4f6f8;
+            --card-bg: #ffffff;
+            --border-color: #e0e0e0;
+            --correct-bg: #e6f4ea;
+            --correct-border: #137333;
+            --correct-text: #0d652d;
+            --option-bg: #f8f9fa;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 24px;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background-color: var(--card-bg);
+            padding: 28px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+            margin-bottom: 24px;
+            text-align: center;
+            border-top: 6px solid var(--primary-color);
+        }
+
+        h1 {
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: #5f6368;
+            font-size: 1.05em;
+            margin-bottom: 16px;
+        }
+
+        .btn-print {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            font-size: 15px;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .btn-print:hover {
+            background-color: #005a9e;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-color);
+            page-break-inside: avoid;
+        }
+
+        .question-number {
+            font-size: 0.9em;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .statement {
+            font-size: 1.05em;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #1a1a1a;
+        }
+
+        .options-list {
+            list-style-type: none;
+            padding-left: 0;
+            margin: 16px 0;
+        }
+
+        .options-list li {
+            background-color: var(--option-bg);
+            border: 1px solid var(--border-color);
+            padding: 10px 14px;
+            border-radius: 4px;
+            margin-bottom: 8px;
+            font-size: 0.95em;
+        }
+
+        .options-list li.correct-option {
+            background-color: var(--correct-bg);
+            border-color: var(--correct-border);
+            color: var(--correct-text);
+            font-weight: bold;
+        }
+
+        .explanation {
+            margin-top: 16px;
+            padding-top: 12px;
+            border-top: 1px dashed var(--border-color);
+            font-size: 0.95em;
+        }
+
+        .explanation-title {
+            font-weight: bold;
+            color: #3c4043;
+            margin-bottom: 6px;
+        }
+
+        .incorrect-reasons {
+            margin: 8px 0;
+            padding-left: 20px;
+            color: #4a4a4a;
+        }
+
+        .incorrect-reasons li {
+            margin-bottom: 4px;
+        }
+
+        .module-tag {
+            display: inline-block;
+            background-color: #e8f0fe;
+            color: #1a73e8;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            margin-top: 12px;
+            font-weight: 500;
+        }
+
+        .lang-switch {
+            margin-top: 18px;
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .lang-btn {
+            background-color: #ffffff;
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+            padding: 8px 20px;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .lang-btn:hover {
+            background-color: #e8f0fe;
+        }
+
+        .lang-btn[aria-current="true"] {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            cursor: default;
+        }
+
+        @media print {
+            body {
+                background-color: #ffffff;
+                padding: 0;
+            }
+
+            .btn-print {
+                display: none;
+            }
+
+            .lang-switch {
+                display: none;
+            }
+
+            .card {
+                box-shadow: none;
+                border: 1px solid #ccc;
+                page-break-inside: avoid;
+            }
+
+            .header {
+                box-shadow: none;
+                border: 1px solid #ccc;
+                border-top: 6px solid var(--primary-color);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>Examen Azure Databricks Data Engineer</h1>
+        <div class="subtitle">Banque Complète de 75 Questions : Énoncés, Choix, Réponses &amp; Explications Détaillées</div>
+        <button class="btn-print" onclick="window.print()">Imprimer / Enregistrer en PDF</button>
+
+        <div class="lang-switch" role="group" aria-label="Langue / Idioma">
+            <button type="button" class="lang-btn" data-lang="fr">Français</button>
+            <button type="button" class="lang-btn" data-lang="pt">Português</button>
+        </div>
+    </div>
+
+    <!-- Question 1 -->
+    <div class="card">
+        <div class="question-number">Question 1 / 75</div>
+        <div class="statement">Vous disposez d'un job Azure Databricks qui utilise Spark SQL et des opérations DataFrame pour effectuer des jointures et des agrégations sur de grandes tables Delta. La charge de travail a été validée sur Databricks Runtime 14.3 LTS. Le job n'utilise pas de bibliothèques de machine learning. Quelle configuration devez-vous utiliser pour maintenir la compatibilité et améliorer les performances des transformations ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li>A. Databricks Runtime 14.3 LTS avec Photon désactivé</li>
+            <li>B. Databricks Runtime 14.3 LTS ML avec Photon activé</li>
+            <li>C. La dernière version majeure de Databricks Runtime (Current DBR) avec Photon activé</li>
+            <li class="correct-option">D. Databricks Runtime 14.3 LTS avec Photon activé (Réponse correcte)</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            Le maintien de la version 14.3 LTS garantit la compatibilité avec l'environnement validé. L'activation du moteur vectorisé Photon apporte des accélérations significatives sur les opérations d'agrégation et de jointure SQL/DataFrame sur les tables Delta.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option A :</strong> Désactiver Photon prive la charge de travail des optimisations de performances vectorisées.</li>
+                <li><strong>Option B :</strong> L'image DBR ML ajoute un surcoût inutile de dépendances de ML qui ne sont pas utilisées.</li>
+                <li><strong>Option C :</strong> Changer de version majeure de Databricks Runtime risque d'introduire des ruptures de compatibilité.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Optimize compute in Azure Databricks</span>
+    </div>
+
+    <!-- Question 2 -->
+    <div class="card">
+        <div class="question-number">Question 2 / 75</div>
+        <div class="statement">Vous disposez d'un catalogue Unity Catalog nommé Catalog1. Un pipeline ingère des fichiers bruts, crée des tables Delta nettoyées et publie des vues de reporting. Comment devez-vous organiser les objets dans Catalog1 pour permettre aux analystes de lire uniquement le reporting et aux ingénieurs de gérer le brut et le nettoyé séparément ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li>A. Créer trois catalogues distincts nommés Catalog_Raw, Catalog_Cleansed et Catalog_Reporting</li>
+            <li class="correct-option">B. Créer des schémas nommés raw_data, cleansed_data et reporting_views dans Catalog1 (Réponse correcte)</li>
+            <li>C. Créer des schémas nommés selon les départements métiers (ex: marketing_data, finance_data) dans Catalog1</li>
+            <li>D. Utiliser un seul schéma et ajouter des préfixes de noms aux objets (ex: raw_table1, reporting_view1)</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            La création de trois schémas au sein du même catalogue permet d'appliquer une politique de gouvernance fine. On peut attribuer le privilège GRANT SELECT sur le schéma reporting_views aux analystes tout en isolant la gestion des données brutes et nettoyées.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option A :</strong> Ne respecte pas la consigne qui impose d'organiser les objets à l'intérieur du catalogue existant Catalog1.</li>
+                <li><strong>Option C :</strong> La séparation par département métier ne résout pas la séparation des étapes techniques du pipeline.</li>
+                <li><strong>Option D :</strong> L'utilisation de préfixes dans un schéma unique empêche d'appliquer des droits globaux d'accès par niveau de schéma.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Manage database objects with Unity Catalog</span>
+    </div>
+
+    <!-- Question 3 -->
+    <div class="card">
+        <div class="question-number">Question 3 / 75</div>
+        <div class="statement">Vous devez créer un catalogue externe (foreign catalog) dans Unity Catalog pour fournir un accès gouverné en lecture seule à une base de données PostgreSQL externe. Quel objet Unity Catalog devez-vous configurer en premier ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li>A. An external location (Un emplacement externe)</li>
+            <li class="correct-option">B. A connection (Une connexion) (Réponse correcte)</li>
+            <li>C. A storage credential (Un identifiant de stockage)</li>
+            <li>D. A schema (Un schéma)</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            Dans Lakehouse Federation, l'objet Connection contient le chemin d'accès, l'hôte et les identifiants requis pour joindre le serveur de base de données externe. Il constitue le prérequis obligatoire avant de pouvoir créer un Foreign Catalog.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option A :</strong> Les External Locations s'appliquent au stockage objet (ADLS Gen2, AWS S3), pas aux bases de données relationnelles SQL.</li>
+                <li><strong>Option C :</strong> Les Storage Credentials s'associent aux emplacements externes pour l'authentification cloud, pas pour les bases PostgreSQL.</li>
+                <li><strong>Option D :</strong> Un schéma est un objet enfant créé au sein d'un catalogue, il ne peut pas précéder la création du catalogue.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Connect to external data sources with Lakehouse Federation</span>
+    </div>
+
+    <!-- Question 4 -->
+    <div class="card">
+        <div class="question-number">Question 4 / 75</div>
+        <div class="statement">Vous disposez de tables Delta gérées Unity Catalog nommées Catalog1.Schema1.Table1 et Catalog1.Schema1.Table2 avec le suivi des lignes activé. Une requête de tableau de bord joint ces tables par order_id et groupe par order_date, mais elle dépasse la durée autorisée. Vous devez créer un objet Unity Catalog pour stocker les résultats précalculés, utiliser les données modifiées pour les rafraîchissements et éviter tout recalcul complet lors des rafraîchissements normaux. Quelle configuration créer ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li class="correct-option">A. Une vue matérialisée utilisant REFRESH POLICY INCREMENTAL STRICT (Réponse correcte)</li>
+            <li>B. Une vue matérialisée utilisant REFRESH POLICY INCREMENTAL</li>
+            <li>C. Une table de streaming (Streaming table)</li>
+            <li>D. Une vue standard (Standard view)</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            Les vues matérialisées permettent de stocker physiquement sur disque les résultats précalculés de requêtes complexes. L'utilisation de la politique INCREMENTAL STRICT force un rafraîchissement incrémentiel et garantit qu'aucun recalcul complet (*full recompute*) ne sera exécuté lors des rafraîchissements ordinaires.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option B :</strong> La politique INCREMENTAL autorise un repli (*fallback*) vers un recalcul complet si le traitement incrémentiel échoue.</li>
+                <li><strong>Option C :</strong> Les tables de streaming sont conçues pour des pipelines d'ingestion append-only, pas pour agréger des requêtes complexes avec jointures sur des tables existantes.</li>
+                <li><strong>Option D :</strong> Une vue standard ne persiste pas les résultats précalculés et réexécute la requête complexe à chaque consultation.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Build data pipelines using Delta Live Tables and Materialized Views</span>
+    </div>
+
+    <!-- Question 5 -->
+    <div class="card">
+        <div class="question-number">Question 5 / 75</div>
+        <div class="statement">Vous disposez d'un espace de travail Azure Databricks pour le développement de notebooks interactifs. Une équipe crée quotidiennement des ressources de calcul multi-usages. Les charges de travail alternent entre exploration rapide et transformations volumineuses, et la majeure partie du calcul est inactive après les heures de bureau. Quelle configuration adopter pour améliorer la disponibilité lors de la création répétée de calculs, éviter de dimensionner pour la demande maximale et réduire les frais ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li>A. Utiliser des instances à la demande (on-demand), activer le dimensionnement automatique (autoscaling), et configurer l'arrêt automatique (auto-termination)</li>
+            <li>B. Assigner le calcul à un pool d'instances, activer l'autoscaling, et désactiver l'arrêt automatique</li>
+            <li>C. Assigner le calcul à un pool d'instances, fixer le nombre de workers, et configurer l'arrêt automatique</li>
+            <li class="correct-option">D. Assigner le calcul à un pool d'instances, activer l'autoscaling, et configurer l'arrêt automatique (Réponse correcte)</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            1. **Pool d'instances :** Maintient des VM prêtes à l'emploi et accélère le temps de démarrage du calcul.<br>
+            2. **Autoscaling :** Adapte dynamiquement le nombre de nœuds pour absorber les transformations volumineuses sans surdimensionner inutilement lors des phases d'exploration.<br>
+            3. **Auto-termination :** Éteint automatiquement les clusters inactifs en dehors des heures de travail afin d'éliminer les coûts de calcul inutiles.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option A :</strong> L'absence de pool d'instances entraîne des délais d'attente importants lors des créations répétées.</li>
+                <li><strong>Option B :</strong> Désactiver l'arrêt automatique laisse tourner les ressources inactives la nuit, générant d'importants surcoûts.</li>
+                <li><strong>Option C :</strong> Utiliser un nombre fixe de workers empêche d'adapter dynamiquement les ressources selon la taille des tâches.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Configure and manage compute in Azure Databricks</span>
+    </div>
+
+    <!-- Question 6 -->
+    <div class="card">
+        <div class="question-number">Question 6 / 75</div>
+        <div class="statement">Vous disposez d'une table Delta externe Unity Catalog nommée catalog1.schema1.table1 avec la compatibilité de lecture Apache Iceberg activée via UniForm. Les vues et autorisations existantes font référence à la table par son nom. Vous devez la migrer vers le stockage géré Unity Catalog via SQL serverless tout en conservant l'historique, les autorisations et les vues. Comment compléter le script SQL ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li>A. Menu 1 : DESCRIBE DETAIL | Menu 2 : SET MANAGED</li>
+            <li>B. Menu 1 : CREATE TABLE | Menu 2 : AS SELECT * FROM</li>
+            <li class="correct-option">C. Menu 1 : ALTER TABLE | Menu 2 : SET MANAGED TRUNCATE UNIFORM HISTORY (Réponse correcte)</li>
+            <li>D. Menu 1 : SHOW TABLES IN | Menu 2 : SET MANAGED</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            La commande ALTER TABLE catalog1.schema1.table1 SET MANAGED convertit la table externe en table gérée sur place sans changer l'objet, ce qui préserve les vues dépendantes, l'historique et les autorisations accordées. La clause TRUNCATE UNIFORM HISTORY est obligatoire pour réinitialiser les métadonnées UniForm/Iceberg lors de la transition.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option A &amp; D :</strong> DESCRIBE et SHOW sont des commandes de consultation, pas des instructions DDL de conversion.</li>
+                <li><strong>Option B :</strong> CREATE TABLE ... AS SELECT crée un nouvel objet et perd le raccordement automatique des autorisations et vues d'origine.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Manage tables and data layouts in Delta Lake</span>
+    </div>
+
+    <!-- Question 7 -->
+    <div class="card">
+        <div class="question-number">Question 7 / 75</div>
+        <div class="statement">Un job de production nommé Job1 contient deux tâches : IngestOrders (utilisant PySpark DataFrames/SQL sans exigence de bibliothèques personnalisées ou type de VM) et TrainLegacy (utilisant des API Spark RDD, un JAR personnalisé et un type de VM spécifique). Quels types de calcul devez-vous attribuer à chaque tâche pour minimiser la gestion et les coûts d'inactivité ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li>A. IngestOrders: Classic all-purpose compute | TrainLegacy: Classic jobs compute</li>
+            <li class="correct-option">B. IngestOrders: Serverless job compute | TrainLegacy: Classic jobs compute (Réponse correcte)</li>
+            <li>C. IngestOrders: Serverless SQL warehouse | TrainLegacy: Serverless job compute</li>
+            <li>D. IngestOrders: Serverless job compute | TrainLegacy: Serverless SQL warehouse</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            1. **IngestOrders :** Le calcul Serverless job compute supprime les coûts d'inactivité et l'administration de clusters tout en prenant parfaitement en charge le code PySpark DataFrame et SQL standard.<br>
+            2. **TrainLegacy :** Le calcul Classic jobs compute permet la configuration fine du type d'instance VM, le support des API Spark RDD legacy et le chargement de bibliothèques JAR personnalisées.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option A :</strong> Classic all-purpose compute est destiné au développement interactif et s'avère plus coûteux pour des tâches automatisées de production.</li>
+                <li><strong>Option C &amp; D :</strong> Serverless SQL Warehouse est optimisé pour les requêtes SQL analytiques pures et ne supporte pas l'exécution de code Python DataFrame ou RDD personnalisé.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Run automated workloads with Azure Databricks Jobs</span>
+    </div>
+
+    <!-- Question 8 -->
+    <div class="card">
+        <div class="question-number">Question 8 / 75</div>
+        <div class="statement">Vous devez accorder les privilèges les plus restrictifs à un groupe d'analystes nommé `analytics_team` pour qu'il puisse exécuter des requêtes sur un SQL Warehouse nommé `Reporting_Warehouse` sans pouvoir modifier sa configuration ni le supprimer. Quelle commande privilégier ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li class="correct-option">A. GRANT USE WAREHOUSE ON WAREHOUSE Reporting_Warehouse TO analytics_team (Réponse correcte)</li>
+            <li>B. GRANT MANAGE ON WAREHOUSE Reporting_Warehouse TO analytics_team</li>
+            <li>C. GRANT SELECT ON WAREHOUSE Reporting_Warehouse TO analytics_team</li>
+            <li>D. GRANT MODIFY ON WAREHOUSE Reporting_Warehouse TO analytics_team</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            Le privilège `CAN USE` (exprimé en SQL par `GRANT USE WAREHOUSE`) permet aux utilisateurs d'attacher leurs sessions et d'exécuter des requêtes SQL sur cet entrepôt sans disposer des droits d'administration.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option B :</strong> Le privilège MANAGE donne des droits d'administration complets (modification, suppression).</li>
+                <li><strong>Option C &amp; D :</strong> Les privilèges `SELECT` et `MODIFY` s'appliquent aux objets de données (tables, vues) et non au composant de calcul Warehouse.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Manage access control in Unity Catalog</span>
+    </div>
+
+    <!-- Question 9 -->
+    <div class="card">
+        <div class="question-number">Question 9 / 75</div>
+        <div class="statement">Un système source dépose en continu des fichiers JSON de structure légèrement évolutive dans un conteneur ADLS Gen2. Quel composant d'ingestion Azure Databricks devez-vous utiliser pour détecter automatiquement les nouveaux fichiers et faire évoluer le schéma sans interruption ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li>A. `spark.read.format("json").load(...)` exécuté dans un job planifié toutes les 5 minutes</li>
+            <li>B. La commande `COPY INTO` exécutée en boucle dans un notebook</li>
+            <li>C. Une requête fédérée Lakehouse Federation direct sur le stockage</li>
+            <li class="correct-option">D. Auto Loader (`spark.readStream.format("cloudFiles")`) (Réponse correcte)</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            Auto Loader (`cloudFiles`) est optimisé pour l'ingestion incrémentielle de millions de fichiers. Il inclut un suivi efficace des fichiers arrivants via notifications et gère nativement le *schema inference* et *schema evolution*.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option A :</strong> Réévalue l'ensemble du répertoire à chaque fois, ce qui devient extrêmement lent au fur et à mesure que le nombre de fichiers augmente.</li>
+                <li><strong>Option B :</strong> `COPY INTO` est adapté au traitement batch/micro-batch, mais est moins flexible qu'Auto Loader pour la détection fine des schémas évolutifs complexes en flux continu.</li>
+                <li><strong>Option C :</strong> Lakehouse Federation concerne le requêtage de bases de données distantes, pas l'ingestion de fichiers répertoires.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Ingest data into Azure Databricks with Auto Loader</span>
+    </div>
+
+    <!-- Question 10 -->
+    <div class="card">
+        <div class="question-number">Question 10 / 75</div>
+        <div class="statement">Vous avez une table Delta volumineuse qui subit fréquemment des requêtes filtrant sur une colonne de haute cardinalité (ex: `customer_id`). Le partitionnement traditionnel sur cette colonne a créé un problème grave de "petits fichiers". Quelle technique devez-vous utiliser ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li>A. Repartitionner la table avec `df.repartition(100)` avant chaque écriture</li>
+            <li class="correct-option">B. Appliquer la commande `OPTIMIZE` avec l'indexation multidimensionnelle `ZORDER BY (customer_id)` ou activer le Liquid Clustering (Réponse correcte)</li>
+            <li>C. Convertir la table en format Parquet standard</li>
+            <li>D. Créer un index secondaire SQL classique sur la colonne `customer_id`</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            L'organisation `Z-Order` (ou le `Liquid Clustering` moderne) regroupe les données connexes dans les mêmes fichiers sans diviser physiquement la table en répertoires distincts, éliminant le problème des petits fichiers tout en permettant au Data Skipping d'éliminer les fichiers non pertinents.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option A :</strong> `repartition()` réorganise le nombre de fichiers en mémoire lors de l'écriture mais ne réordonne pas logiquement les données par valeur de colonne.</li>
+                <li><strong>Option C :</strong> Parquet standard ne gère ni le Z-Ordering ni les fonctionnalités d'optimisation avancées de Delta Lake.</li>
+                <li><strong>Option D :</strong> Les tables Spark/Delta ne supportent pas les index secondaires SQL traditionnels des SGBD relationnels.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Optimize Delta Lake performance with Z-Order and Liquid Clustering</span>
+    </div>
+
+    <!-- Question 11 -->
+    <div class="card">
+        <div class="question-number">Question 11 / 75</div>
+        <div class="statement">Vous devez effectuer un audit et consulter l'état exact de la table Delta `sales` telle qu'elle existait le 15 janvier 2026 à 10:00:00 UTC. Quelle syntaxe SQL est exacte ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li>A. `SELECT * FROM sales AT DATE '2026-01-15 10:00:00'`</li>
+            <li>B. `SELECT * FROM sales RESTORE TO '2026-01-15 10:00:00'`</li>
+            <li>C. `SELECT * FROM sales WITH HISTORY (timestamp = '2026-01-15 10:00:00')`</li>
+            <li class="correct-option">D. `SELECT * FROM sales TIMESTAMP AS OF '2026-01-15 10:00:00'` (Réponse correcte)</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            Delta Lake prend en charge le voyagement dans le temps (*Time Travel*). La clause `TIMESTAMP AS OF` (ou `VERSION AS OF`) permet de consulter les données dans un état historique précis conservé par le journal de transactions `_delta_log`.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option A, B &amp; C :</strong> Ce sont des syntaxes SQL incorrectes ou inexistantes dans le dialecte Databricks SQL / Delta Lake.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Work with Delta Lake table history</span>
+    </div>
+
+    <!-- Question 12 -->
+    <div class="card">
+        <div class="question-number">Question 12 / 75</div>
+        <div class="statement">Pour réduire les coûts de stockage, vous décidez de supprimer définitivement les anciens fichiers de données Parquet obsolètes qui ne sont plus référencés par les transactions actuelles de la table Delta `orders` depuis plus de 7 jours (168 heures). Quelle commande exécuter ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li>A. `DELETE FROM orders WHERE commit_time < CURRENT_DATE() - 7`</li>
+            <li>B. `PURGE TABLE orders RETAIN 7 DAYS`</li>
+            <li class="correct-option">C. `VACUUM orders RETAIN 168 HOURS` (Réponse correcte)</li>
+            <li>D. `OPTIMIZE orders CLEANUP OLD FILES`</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            La commande `VACUUM` nettoie physiquement du stockage objet les fichiers de données qui ne sont plus référencés dans l'état actuel ou les états plus récents que le seuil de rétention spécifié (7 jours par défaut).
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option A :</strong> `DELETE` supprime des enregistrements logiques de données, mais crée de nouveaux commits sans purger les anciens fichiers physiques.</li>
+                <li><strong>Option B &amp; D :</strong> Syntaxes SQL invalides sur Databricks.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Maintain Delta Lake tables</span>
+    </div>
+
+    <!-- Question 13 -->
+    <div class="card">
+        <div class="question-number">Question 13 / 75</div>
+        <div class="statement">Dans la hiérarchie de nommage et de gouvernance d'objets introduite par Unity Catalog, quelle est la structure complète obligatoire pour faire référence à une table ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li class="correct-option">A. `catalog.schema.table` (Réponse correcte)</li>
+            <li>B. `workspace.database.table`</li>
+            <li>C. `storage_account.container.table`</li>
+            <li>D. `group.schema.table`</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            Unity Catalog applique un espace de nommage à trois niveaux : `catalog_name.schema_name.table_name`, ce qui permet d'isoler clairement les environnements et domaines fonctionnels.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option B, C &amp; D :</strong> Ne correspondent pas aux trois niveaux de métadonnées d'Unity Catalog.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Manage database objects with Unity Catalog</span>
+    </div>
+
+    <!-- Question 14 -->
+    <div class="card">
+        <div class="question-number">Question 14 / 75</div>
+        <div class="statement">Vous devez configurer l'accès à un conteneur ADLS Gen2 nommé `raw-data` situé sur un compte de stockage Azure. Dans Unity Catalog, quel objet lie un *Storage Credential* (identifiant d'accès managé) à un chemin d'accès d'URI de stockage externe (`abfss://...`) ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li class="correct-option">A. An External Location (Un emplacement externe) (Réponse correcte)</li>
+            <li>B. A Foreign Catalog</li>
+            <li>C. A Delta Share</li>
+            <li>D. A Managed Volume</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            L'objet `External Location` associe un chemin de stockage Cloud sécurisé avec une identité d'accès (`Storage Credential`), permettant d'accorder des privilèges de lecture/écriture sur ce sous-ensemble de stockage.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option B :</strong> Sert à connecter des bases de données relationnelles externes via Lakehouse Federation.</li>
+                <li><strong>Option C :</strong> Sert au partage sécurisé de données multi-entreprises via Delta Sharing.</li>
+                <li><strong>Option D :</strong> Un Managed Volume utilise le stockage géré par défaut du schéma, pas un emplacement externe sur-mesure.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Manage external locations and storage credentials</span>
+    </div>
+
+    <!-- Question 15 -->
+    <div class="card">
+        <div class="question-number">Question 15 / 75</div>
+        <div class="statement">Vous construisez un pipeline Delta Live Tables (DLT). Vous souhaitez ajouter une règle de contrôle de qualité imposant que le champ `timestamp` ne soit jamais nul. Quelle syntaxe DLT utiliser ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li>A. `CHECK (timestamp IS NOT NULL)`</li>
+            <li class="correct-option">B. `@dlt.expect("valid_timestamp", "timestamp IS NOT NULL")` (Réponse correcte)</li>
+            <li>C. `ASSERT timestamp IS NOT NULL`</li>
+            <li>D. `WHERE timestamp IS NOT NULL`</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            En Python DLT, le décorateur `@dlt.expect` (ou en SQL la clause `CONSTRAINT ... EXPECT`) définit des métriques de qualité (*expectations*) suivies dans les journaux d'événement DLT.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option A &amp; C :</strong> Ce ne sont pas des décorateurs d'expectations spécifiques à l'API Delta Live Tables.</li>
+                <li><strong>Option D :</strong> Filtrerait les lignes dans la transformation sans enregistrer de métriques de qualité ni d'alertes DLT.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Manage data quality with Delta Live Tables</span>
+    </div>
+
+    <!-- Question 16 -->
+    <div class="card">
+        <div class="question-number">Question 16 / 75</div>
+        <div class="statement">Dans un pipeline Delta Live Tables, quelle action d'expectation devez-vous spécifier si vous voulez que les lignes qui échouent au test de validation soient immédiatement éliminées de la table cible sans stopper l'exécution du pipeline ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li>A. `ON VIOLATION FAIL UPDATE`</li>
+            <li>B. `ON VIOLATION IGNORE`</li>
+            <li class="correct-option">C. `ON VIOLATION DROP ROW` (Réponse correcte)</li>
+            <li>D. `ON VIOLATION LOG ONLY`</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            L'instruction `ON VIOLATION DROP ROW` ordonne au moteur DLT de jeter les enregistrements invalides tout en enregistrant le nombre de lignes supprimées dans la télémétrie de pipeline.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option A :</strong> Bloque et fait échouer l'exécution du pipeline.</li>
+                <li><strong>Option B &amp; D :</strong> Le comportement par défaut conserve la ligne invalide et se contente d'enregistrer l'anomalie dans les métriques.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Manage data quality with Delta Live Tables</span>
+    </div>
+
+    <!-- Question 17 -->
+    <div class="card">
+        <div class="question-number">Question 17 / 75</div>
+        <div class="statement">Dans un pipeline DLT critique pour la conformité financière, la présence de transactions avec un montant négatif est inacceptable. Quel comportement d'expectation DLT devez-vous configurer pour stopper net le traitement si une seule donnée invalide survient ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li>A. `ON VIOLATION DROP ROW`</li>
+            <li class="correct-option">B. `ON VIOLATION FAIL UPDATE` (Réponse correcte)</li>
+            <li>C. `ON VIOLATION STOP PIPELINE`</li>
+            <li>D. `ON VIOLATION RAISE ERROR`</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            L'instruction `ON VIOLATION FAIL UPDATE` interrompt immédiatement la mise à jour du pipeline dès qu'un enregistrement ne respecte pas la contrainte énoncée.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option A :</strong> Continuerait le traitement en supprimant silencieusement les mauvaises lignes.</li>
+                <li><strong>Option C &amp; D :</strong> Mots-clés fictifs non reconnus par la syntaxe DLT.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Manage data quality with Delta Live Tables</span>
+    </div>
+
+    <!-- Question 18 -->
+    <div class="card">
+        <div class="question-number">Question 18 / 75</div>
+        <div class="statement">Vous exécutez une requête Spark Structured Streaming qui lit des événements depuis Event Hubs et les écrit dans Delta Lake. Pour garantir que le flux puisse reprendre exactement là où il s'est arrêté après un redémarrage du cluster, quel paramètre d'écriture est indispensable ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li>A. `.option("resumeFrom", "latest")`</li>
+            <li>B. `.option("enableStateStore", "true")`</li>
+            <li class="correct-option">C. `.option("checkpointLocation", "abfss://...")` (Réponse correcte)</li>
+            <li>D. `.option("autoRecovery", "enabled")`</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            Le répertoire de *checkpointing* (`checkpointLocation`) persiste l'état du flux (offsets, métadonnées de progression) sur du stockage durable, garantissant un traitement *exactly-once* lors des redémarrages.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option A, B &amp; D :</strong> Ne sont pas des options valides de gestion d'état de reprise Structured Streaming.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Process streaming data with Structured Streaming</span>
+    </div>
+
+    <!-- Question 19 -->
+    <div class="card">
+        <div class="question-number">Question 19 / 75</div>
+        <div class="statement">Vous souhaitez capturer et propager les modifications de lignes (insertions, mises à jour, suppressions) sur une table Delta `customers` afin de les consommer sous forme de flux incrémentiel. Quelle propriété de table devez-vous activer ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li class="correct-option">A. `ALTER TABLE customers SET TBLPROPERTIES (delta.enableChangeDataFeed = true)` (Réponse correcte)</li>
+            <li>B. `ALTER TABLE customers SET TBLPROPERTIES (delta.enableCDC = true)`</li>
+            <li>C. `ALTER TABLE customers ENABLE ROW LOGGING`</li>
+            <li>D. `ALTER TABLE customers TRACK CHANGES`</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            La fonctionnalité Change Data Feed (CDF) s'active avec la propriété `delta.enableChangeDataFeed = true`. Elle enregistre les métadonnées de modification de ligne permettant la lecture via `readStream` avec la fonction `readChangeDataFeed`.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option B, C &amp; D :</strong> Syntaxes et noms de propriétés erronés.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Use Delta Lake Change Data Feed</span>
+    </div>
+
+    <!-- Question 20 -->
+    <div class="card">
+        <div class="question-number">Question 20 / 75</div>
+        <div class="statement">Vous devez synchroniser une table de dimension `dim_product` en exécutant une mise à jour des prix pour les produits existants et une insertion pour les nouveaux produits en une seule opération atomique. Quelle instruction SQL utiliser ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li>A. `UPDATE OR INSERT INTO dim_product ...`</li>
+            <li>B. `UPSERT INTO dim_product SELECT * FROM new_products`</li>
+            <li>C. `COPY INTO dim_product FROM new_products`</li>
+            <li class="correct-option">D. `MERGE INTO dim_product target USING new_products source ON target.product_id = source.product_id WHEN MATCHED THEN UPDATE SET * WHEN NOT MATCHED THEN INSERT *` (Réponse correcte)</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            L'instruction ANSI SQL `MERGE INTO` est la commande standard sur Delta Lake pour exécuter des opérations d'*Upsert* complexes (combinaison de `WHEN MATCHED` et `WHEN NOT MATCHED`).
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option A &amp; B :</strong> `UPSERT` et `UPDATE OR INSERT` ne sont pas des commandes SQL valides.</li>
+                <li><strong>Option C :</strong> `COPY INTO` est utilisé pour l'ingestion de fichiers bruts depuis un stockage cloud, pas pour faire une jointure/fusion de deux tables.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Upsert data into Delta Lake tables</span>
+    </div>
+
+    <!-- Question 21 -->
+    <div class="card">
+        <div class="question-number">Question 21 / 75</div>
+        <div class="statement">Vous créez une table de faits `fact_transactions`. Vous voulez qu'un identifiant numérique unique s'incrémente automatiquement à chaque nouvelle ligne insérée. Quelle définition de colonne utiliser ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li>A. `transaction_id BIGINT AUTO_INCREMENT`</li>
+            <li class="correct-option">B. `transaction_id BIGINT GENERATED ALWAYS AS IDENTITY` (Réponse correcte)</li>
+            <li>C. `transaction_id BIGINT DEFAULT NEXTVAL()`</li>
+            <li>D. `transaction_id BIGINT SERIAL`</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            Delta Lake supporte la norme SQL `GENERATED ALWAYS AS IDENTITY` (ou `GENERATED BY DEFAULT AS IDENTITY`) pour la génération automatique de clés d'incrémentation.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option A, C &amp; D :</strong> Sont des syntaxes propres à MySQL, PostgreSQL ou Oracle, non supportées par Delta Lake.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Manage tables and data layouts in Delta Lake</span>
+    </div>
+
+    <!-- Question 22 -->
+    <div class="card">
+        <div class="question-number">Question 22 / 75</div>
+        <div class="statement">Afin de ne pas inscrire de jeton d'accès ou de mot de passe en texte clair dans vos notebooks Python, quel utilitaire Databricks devez-vous appeler pour récupérer un secret stocké dans un *Secret Scope* configuré ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li>A. `mssparkutils.credentials.getSecret(...)`</li>
+            <li>B. `spark.conf.get("secret.my_key")`</li>
+            <li>C. `os.getenv("MY_SECRET")`</li>
+            <li class="correct-option">D. `dbutils.secrets.get(scope = "my_scope", key = "my_key")` (Réponse correcte)</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            `dbutils.secrets.get()` est l'API native Databricks pour extraire de manière sécurisée les clés d'API et secrets stockés dans les coffres de secrets (Azure Key Vault ou Databricks Secret Scope).
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option A :</strong> Est une bibliothèque propre à Azure Synapse Analytics, pas Databricks.</li>
+                <li><strong>Option B &amp; C :</strong> Ne permettent pas d'extraire des clés sécurisées masquées depuis la gestion centralisée des secrets Databricks.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Manage secrets in Azure Databricks</span>
+    </div>
+
+    <!-- Question 23 -->
+    <div class="card">
+        <div class="question-number">Question 23 / 75</div>
+        <div class="statement">Vous devez configurer un cluster partagé entre plusieurs Data Analysts. Le cluster doit appliquer le contrôle d'accès fin Unity Catalog (sécurité au niveau des lignes/colonnes) et empêcher un utilisateur d'accéder au système de fichiers sous-jacent du nœud driver. Quel mode d'accès au calcul choisir ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li class="correct-option">A. Shared Access Mode (Réponse correcte)</li>
+            <li>B. Single User Access Mode</li>
+            <li>C. No Isolation Shared Access Mode</li>
+            <li>D. Custom Access Mode</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            Le mode d'accès `Shared` (partagé) isole les sessions des utilisateurs, interdit le mode privilège administrateur local et applique les politiques de gouvernance et règles de sécurité Unity Catalog.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option B :</strong> Dédié à un utilisateur unique, ne prend pas en charge l'isolation multi-utilisateurs.</li>
+                <li><strong>Option C :</strong> Désactive les verrous de sécurité et ne peut pas garantir le filtrage Unity Catalog.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Configure and manage compute in Azure Databricks</span>
+    </div>
+
+    <!-- Question 24 -->
+    <div class="card">
+        <div class="question-number">Question 24 / 75</div>
+        <div class="statement">Vous créez une vue dynamique pour masquer les numéros de carte de crédit aux utilisateurs qui ne font pas partie du groupe `finance_hr`. Quelle fonction de sécurité utiliser dans la clause `CASE WHEN` ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li>A. `user_in_role('finance_hr')`</li>
+            <li>B. `check_group('finance_hr')`</li>
+            <li class="correct-option">C. `is_account_group_member('finance_hr')` (Réponse correcte)</li>
+            <li>D. `current_user_has_grant('finance_hr')`</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            La fonction `is_account_group_member()` évalue si l'utilisateur qui exécute la requête fait partie du groupe spécifié dans Unity Catalog pour appliquer le masquage dynamique.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option A, B &amp; D :</strong> Noms de fonctions inexistants dans Spark SQL / Unity Catalog.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Manage access control in Unity Catalog</span>
+    </div>
+
+    <!-- Question 25 -->
+    <div class="card">
+        <div class="question-number">Question 25 / 75</div>
+        <div class="statement">Vous voulez restreindre la lecture des lignes de la table `patients` de sorte que les médecins ne voient que les patients de leur région respective. Quelle fonctionnalité native d'Unity Catalog devez-vous attacher à la table ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li class="correct-option">A. Une fonction de Row Filter (`ALTER TABLE patients SET ROW FILTER region_filter ON (region)`) (Réponse correcte)</li>
+            <li>B. Un Dynamic Schema Filter</li>
+            <li>C. Un déclencheur d'audit</li>
+            <li>D. Une vue matérialisée partitionnée</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            Les `Row Filters` permettent de lier une fonction SQL personnalisée à une table Unity Catalog pour intercepter et filtrer de façon transparente les lignes retournées selon l'identité de l'exécutant.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option B &amp; C :</strong> Concepts non existants dans Unity Catalog.</li>
+                <li><strong>Option D :</strong> Multiplierait la donnée sous forme de vues sans garantir le verrouillage de la table source d'origine.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Filter sensitive data using Row Filters and Column Masks</span>
+    </div>
+
+    <!-- Question 26 -->
+    <div class="card">
+        <div class="question-number">Question 26 / 75</div>
+        <div class="statement">Vous devez anonymiser une colonne `ssn` (sécurité sociale) directement dans la table de base Unity Catalog en remplaçant la valeur par `'XXX-XX-'` pour les non-administrateurs. Quelle fonctionnalité utiliser ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li class="correct-option">A. Un Column Mask (`ALTER TABLE customers ALTER COLUMN ssn SET MASK ssn_mask_fn`) (Réponse correcte)</li>
+            <li>B. Une clé d'encodage SHA2</li>
+            <li>C. Un trigger d'anonymisation sur écriture</li>
+            <li>D. Une contrainte CHECK de masque</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            Les `Column Masks` s'appliquent sur des colonnes spécifiques pour transformer dynamiquement les valeurs retournées en fonction de l'utilisateur qui effectue le `SELECT`.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option B :</strong> Le hachage altère la donnée de manière irréversible lors de l'écriture sans possibilité de démasquer pour les administrateurs légitimes.</li>
+                <li><strong>Option C &amp; D :</strong> Syntaxes non applicables pour la gouvernance de masquage de colonne.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Filter sensitive data using Row Filters and Column Masks</span>
+    </div>
+
+    <!-- Question 27 -->
+    <div class="card">
+        <div class="question-number">Question 27 / 75</div>
+        <div class="statement">Quelle fonctionnalité de l'espace de travail Azure Databricks permet aux développeurs de synchroniser leurs notebooks, fichiers de code Python et configurations avec des dépôts Git distants (Azure DevOps, GitHub, GitLab) ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li>A. Databricks Connect</li>
+            <li>B. Databricks Sync Engine</li>
+            <li class="correct-option">C. Databricks Repos (Workspace Git Integration) (Réponse correcte)</li>
+            <li>D. Delta Sharing</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            Databricks Repos offre une intégration Git directe dans l'UI pour cloner, pusher, puller et gérer les branches sur des dépôts distants.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option A :</strong> Databricks Connect permet de connecter son IDE local (ex: VS Code) à un cluster Databricks à distance.</li>
+                <li><strong>Option D :</strong> Delta Sharing est un protocole de partage de données entre organisations.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Use Git integration in Azure Databricks Repos</span>
+    </div>
+
+    <!-- Question 28 -->
+    <div class="card">
+        <div class="question-number">Question 28 / 75</div>
+        <div class="statement">Un job Databricks doit être déclenché automatiquement dès qu'un nouveau fichier d'extrayant bancaire arrive dans un dossier spécifique d'un volume Unity Catalog. Quel type de déclencheur (*trigger*) devez-vous associer au job ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li>A. Scheduled (CRON) Trigger</li>
+            <li class="correct-option">B. File arrival trigger (Réponse correcte)</li>
+            <li>C. Continuous Execution Trigger</li>
+            <li>D. Webhook Event Trigger</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            Le déclencheur `File arrival` surveille un emplacement de stockage ou un volume et démarre l'exécution du job immédiatement après la détection d'un nouveau fichier.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option A :</strong> Planifie des exécutions à des heures fixes (ex: tous les jours à 8h).</li>
+                <li><strong>Option C :</strong> Relance immédiatement le job en boucle dés sa terminaison.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Run automated workloads with Azure Databricks Jobs</span>
+    </div>
+
+    <!-- Question 29 -->
+    <div class="card">
+        <div class="question-number">Question 29 / 75</div>
+        <div class="statement">Une tâche au sein d'un Job Databricks échoue occasionnellement en raison d'un problème d'instabilité réseau temporaire lors du téléchargement d'un fichier web. Comment rendre le job plus résilient sans modification de code ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li>A. Augmenter le nombre de workers du cluster</li>
+            <li>B. Passer le cluster en mode Single User</li>
+            <li class="correct-option">C. Augmenter le nombre de tentatives de réexécution de tâche (`Retries`) dans la configuration de la tâche (Réponse correcte)</li>
+            <li>D. Activer le suivi du Change Data Feed</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            Configurer la politique de `Retries` (réessais) permet à Databricks Jobs de relancer automatiquement la tâche en cas d'échec transitoire avant de déclarer la tâche définitivement en erreur.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option A &amp; B :</strong> Modifier le nombre de nœuds ou le mode d'accès n'a pas d'effet sur les pannes d'appels réseau externes transitoires.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Run automated workloads with Azure Databricks Jobs</span>
+    </div>
+
+    <!-- Question 30 -->
+    <div class="card">
+        <div class="question-number">Question 30 / 75</div>
+        <div class="statement">Où pouvez-vous configurer la destination de livraison permanente des journaux de logs d'exécuteurs et du driver Spark (*Cluster Log Delivery*) afin d'analyser les erreurs *Out Of Memory* même après la suppression d'un cluster ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li class="correct-option">A. Dans les paramètres avancés du cluster (Advanced Options -> Logging) vers un emplacement ADLS Gen2 ou Volume (Réponse correcte)</li>
+            <li>B. Dans les options de notebook</li>
+            <li>C. Dans la table system.access uniquement</li>
+            <li>D. Dans le fichier de configuration de l'espace de travail Azure Key Vault</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            Dans la section *Advanced Options* de la configuration du cluster, vous pouvez définir un chemin de stockage persistant pour sauvegarder automatiquement les logs `stdout` et `stderr` de l'application Spark.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option B &amp; D :</strong> Les notebooks et Key Vault ne gèrent pas la persistance des fichiers logs systèmes Spark.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Configure and manage compute in Azure Databricks</span>
+    </div>
+
+    <!-- Question 31 -->
+    <div class="card">
+        <div class="question-number">Question 31 / 75</div>
+        <div class="statement">Vous devez créer une copie instantanée d'une table Delta de production de 10 To pour effectuer des tests rapides en environnement de développement, sans dupliquer les fichiers de données physiques pour réduire les coûts. Quelle commande exécuter ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li>A. `CREATE TABLE dev_table DEEP CLONE prod_table`</li>
+            <li>B. `CREATE TABLE dev_table AS SELECT * FROM prod_table`</li>
+            <li class="correct-option">C. `CREATE TABLE dev_table SHALLOW CLONE prod_table` (Réponse correcte)</li>
+            <li>D. `COPY TABLE prod_table TO dev_table`</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            Un `SHALLOW CLONE` (clonage léger) ne copie que les métadonnées et le journal de transaction. Il pointe vers les mêmes fichiers de données d'origine, rendant la création quasi instantanée et sans surcoût de stockage.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option A &amp; B :</strong> Copient physiquement l'intégralité des 10 To de données sur disque.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Clone tables on Delta Lake</span>
+    </div>
+
+    <!-- Question 32 -->
+    <div class="card">
+        <div class="question-number">Question 32 / 75</div>
+        <div class="statement">Vous devez créer une sauvegarde isolée d'une table Delta de production dans un autre catalogue avant d'effectuer des opérations destructrices. Vous voulez que cette nouvelle table possède ses propres fichiers de données totalement indépendants. Quelle commande exécuter ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li>A. `CREATE TABLE backup_table SHALLOW CLONE prod_table`</li>
+            <li class="correct-option">B. `CREATE TABLE backup_table DEEP CLONE prod_table` (Réponse correcte)</li>
+            <li>C. `EXPORT TABLE prod_table TO backup_table`</li>
+            <li>D. `SYNC TABLE prod_table TO backup_table`</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            Un `DEEP CLONE` (clonage profond) recopie intégralement la structure de métadonnées ainsi que tous les fichiers de données physiques, rendant la table cible indépendante de la source.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option A :</strong> Un clonage léger dépend toujours des fichiers sources d'origine.</li>
+                <li><strong>Option C &amp; D :</strong> Syntaxes SQL invalides.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Clone tables on Delta Lake</span>
+    </div>
+
+    <!-- Question 33 -->
+    <div class="card">
+        <div class="question-number">Question 33 / 75</div>
+        <div class="statement">Comment un responsable Sécurité peut-il identifier visuellement toutes les vues, tables et colonnes d'un compte Azure Databricks alimentées par une colonne source spécifique contenant un code PII ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li class="correct-option">A. En consultant le graphe de traçabilité des données (Unity Catalog Data Lineage) au niveau colonne (Réponse correcte)</li>
+            <li>B. En analysant le Spark UI DAG</li>
+            <li>C. En inspectant les logs du driver Spark</li>
+            <li>D. En lisant la table `system.billing.usage`</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            Unity Catalog capture automatiquement la traçabilité (*lineage*) au niveau table et colonne pour toutes les exécutions SQL, Python et DLT, affichant une représentation graphique des flux de données.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option B :</strong> Le DAG Spark montre les étapes d'exécution d'un job ponctuel, pas la traçabilité globale persistée du catalogue.</li>
+                <li><strong>Option D :</strong> Concerne les coûts et la consommation de DBUs.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Capture and view data lineage with Unity Catalog</span>
+    </div>
+
+    <!-- Question 34 -->
+    <div class="card">
+        <div class="question-number">Question 34 / 75</div>
+        <div class="statement">Vous devez construire un tableau de bord de FinOps pour suivre la consommation des unités Databricks (DBU) par utilisateur et par cluster. Quel schéma système Unity Catalog contient ces tables d'audit ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li>A. `system.security`</li>
+            <li>B. `default.dbu_logs`</li>
+            <li class="correct-option">C. `system.billing` (Réponse correcte)</li>
+            <li>D. `catalog1.system_logs`</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            Le schéma `system.billing` met à disposition des vues telles que `system.billing.usage` qui recensent la consommation détaillée des DBUs pour l'ensemble du compte Azure Databricks.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option A, B &amp; D :</strong> Noms de schémas ou d'emplacements inexacts pour les données de facturation.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Monitor usage with system tables</span>
+    </div>
+
+    <!-- Question 35 -->
+    <div class="card">
+        <div class="question-number">Question 35 / 75</div>
+        <div class="statement">Pour minimiser les coûts liés à l'exécution de pipelines de traitement par lots nocturnes non critiques, quelle option de machines virtuelles et de type de calcul est recommandée ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li>A. Clusters All-Purpose avec instances à la demande</li>
+            <li>B. SQL Warehouses Classic de taille XL</li>
+            <li>C. Calcul Single User avec arrêt automatique désactivé</li>
+            <li class="correct-option">D. Clusters de Jobs (Jobs compute) ou Serverless avec des instances Spot Azure (Réponse correcte)</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            Les clusters de Jobs bénéficient d'un tarif DBU réduit par rapport aux clusters All-Purpose, et l'utilisation d'instances Spot Azure permet d'obtenir des rabais importants sur le coût des machines virtuelles cloud.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option A &amp; C :</strong> Sont des choix nettement plus coûteux adaptés au développement interactif.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Optimize Azure Databricks costs</span>
+    </div>
+
+    <!-- Question 36 -->
+    <div class="card">
+        <div class="question-number">Question 36 / 75</div>
+        <div class="statement">Quelle fonctionnalité d'organisation physique des données dans Delta Lake remplace le partitionnement traditionnel et évite les problèmes de découpage trop fin (*over-partitioning*) sur les tables à forte croissance ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li>A. Auto-Indexing</li>
+            <li>B. Dynamic Bucketing</li>
+            <li class="correct-option">C. Liquid Clustering (`CLUSTER BY`) (Réponse correcte)</li>
+            <li>D. Delta Caching</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            Liquid Clustering adapte de manière dynamique l'agencement des données en fonction des clés définies sans créer de sous-répertoires physiques rigides, éliminant les défauts du partitionnement classique.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option A &amp; B :</strong> Fonctionnalités non existantes sous ces noms dans Delta Lake.</li>
+                <li><strong>Option D :</strong> Le Delta Cache accélère les lectures répétées en mémoire/SSD local sur les workers, mais n'organise pas le stockage physique de la table.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Use Liquid Clustering for Delta tables</span>
+    </div>
+
+    <!-- Question 37 -->
+    <div class="card">
+        <div class="question-number">Question 37 / 75</div>
+        <div class="statement">Vous avez une table configurée avec Liquid Clustering sur la colonne `region`. Vous constatez que les modèles de requêtes ont changé et filtrent désormais sur `customer_segment`. Comment adapter la table ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li>A. Supprimer et recréer la table avec la nouvelle clé</li>
+            <li>B. Exécuter `REPARTITION TABLE table_name BY (customer_segment)`</li>
+            <li>C. Exécuter un `VACUUM FULL`</li>
+            <li class="correct-option">D. Exécuter `ALTER TABLE table_name CLUSTER BY (customer_segment)` puis un `OPTIMIZE` (Réponse correcte)</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            Liquid Clustering permet de modifier les colonnes de clustering à n'importe quel moment via `ALTER TABLE ... CLUSTER BY`. Les écriture futures et les prochains `OPTIMIZE` appliqueront le nouveau regroupement sans réécriture complète forcée immediate.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option A :</strong> Réinvalide les données et interrompt la disponibilité de la table.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Use Liquid Clustering for Delta tables</span>
+    </div>
+
+    <!-- Question 38 -->
+    <div class="card">
+        <div class="question-number">Question 38 / 75</div>
+        <div class="statement">Dans Spark UI, lors de l'analyse d'une étape de traitement (*stage*) anormalement lente, vous remarquez que 199 de vos 200 tâches se terminent en quelques secondes, mais qu'une seule tâche prend plus de 45 minutes. De quel problème s'agit-il ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li>A. Spark Memory Leak</li>
+            <li>B. Small File Problem</li>
+            <li class="correct-option">C. Data Skew (Déséquilibre/Asymétrie des données) (Réponse correcte)</li>
+            <li>D. Deadlock réseau</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            Le *Data Skew* survient lorsqu'une clé de regroupement ou de jointure concentre une quantité disproportionnée de données sur une seule partition, saturant un seul exécuteur Spark pendant que les autres restent inactifs.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option B :</strong> Ralentirait uniformément la phase de lecture globale de toutes les tâches.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Troubleshoot and debug Spark applications</span>
+    </div>
+
+    <!-- Question 39 -->
+    <div class="card">
+        <div class="question-number">Question 39 / 75</div>
+        <div class="statement">Vous devez joindre une table de faits de 500 Go avec une table de dimension d'a peine 2 Mo. Quelle technique Spark permet d'éliminer totalement la phase coûteuse d'échange de données sur le réseau (*shuffle*) ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li>A. Sort-Merge Join avec repartitionnement</li>
+            <li class="correct-option">B. Broadcast Join via `df_fact.join(broadcast(df_dim), "key")` (Réponse correcte)</li>
+            <li>C. Cross Join</li>
+            <li>D. Outer Join avec Z-Ordering</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            La jointure par diffusion (*Broadcast Join*) envoie une copie intégrale de la petite table sur chaque nœud exécuteur, réalisant la jointure localement sans réorganiser la grande table sur le réseau.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option A :</strong> Sort-Merge Join implique un tirage/échange réseau complet (*shuffle*) des deux côtés.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Optimize query execution in Apache Spark</span>
+    </div>
+
+    <!-- Question 40 -->
+    <div class="card">
+        <div class="question-number">Question 40 / 75</div>
+        <div class="statement">Quelle fonctionnalité du moteur d'exécution Apache Spark réévalue dynamiquement le plan d'exécution à chaud en cours de traitement (par exemple en convertissant une Sort-Merge Join en Broadcast Join si la taille réelle des données filtrées s'avère inférieure au seuil) ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li>A. Catalyst Optimizer Statique</li>
+            <li class="correct-option">B. Adaptive Query Execution (AQE) (Réponse correcte)</li>
+            <li>C. Auto-Scaling Engine</li>
+            <li>D. Dynamic Partition Pruning (DPP) statique</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            AQE (Adaptive Query Execution) analyse les statistiques réelles obtenues aux étapes d'exécution pour réoptimiser le plan physique à la volée (coalescence de partitions, gestion du skew, conversion de jointures).
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option A :</strong> Le Catalyst Optimizer classique pré-calcule le plan avant l'exécution sur la base d'estimations.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Optimize query execution in Apache Spark</span>
+    </div>
+
+    <!-- Question 41 -->
+    <div class="card">
+        <div class="question-number">Question 41 / 75</div>
+        <div class="statement">Vous avez configuré Lakehouse Federation pour interroger des tables hébergées dans une base de données externe (Snowflake, PostgreSQL, SQL Server). Comment devez-vous contrôler l'accès de vos utilisateurs à ces tables découvertes ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li class="correct-option">A. Appliquer les privilèges GRANT directement sur le catalogue externe (foreign catalog) dans Unity Catalog (Réponse correcte)</li>
+            <li>B. Créer une connexion (Connection) distincte par groupe d'utilisateurs</li>
+            <li>C. Exporter les tables distantes vers ADLS Gen2 puis n'accorder l'accès qu'aux copies</li>
+            <li>D. Créer un identifiant de stockage (storage credential) par groupe d'utilisateurs</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            Un catalogue externe (foreign catalog) est un objet Unity Catalog à part entière. La gouvernance reste donc centralisée : on applique les mêmes privilèges que sur n'importe quel objet Unity Catalog (`GRANT USE CATALOG`, `USE SCHEMA`, `SELECT`) sur le catalogue externe et ses schémas. Les identifiants de connexion à la source sont stockés dans l'objet *Connection* et ne sont jamais exposés aux utilisateurs.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option B :</strong> Une connexion décrit *comment* joindre la source (hôte, port, identifiants), pas *qui* peut lire quoi. Multiplier les connexions ne réalise aucun contrôle d'accès et complexifie la maintenance.</li>
+                <li><strong>Option C :</strong> Copier les données contredit l'intérêt même de Lakehouse Federation (interroger sans déplacer les données) et fait perdre la fraîcheur.</li>
+                <li><strong>Option D :</strong> Un storage credential sert à authentifier l'accès au *stockage objet* cloud (ADLS Gen2, S3), et non à gouverner l'accès aux tables fédérées.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Connect to external data sources with Lakehouse Federation</span>
+    </div>
+
+    <!-- Question 42 -->
+    <div class="card">
+        <div class="question-number">Question 42 / 75</div>
+        <div class="statement">Un script a corrompu accidentellement une table Delta de production en écrasant son contenu. Vous devez annuler cette modification et revenir à une version antérieure de la table. Quelle commande SQL devez-vous exécuter ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li class="correct-option">A. `RESTORE TABLE sales TO VERSION AS OF 5` (Réponse correcte)</li>
+            <li>B. `VACUUM sales RETAIN 168 HOURS`</li>
+            <li>C. `ALTER TABLE sales SET TBLPROPERTIES ('version' = '5')`</li>
+            <li>D. `CREATE TABLE sales AS SELECT * FROM sales VERSION AS OF 5`</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            Delta Lake conserve un journal de transactions (*transaction log*) qui permet le voyage dans le temps (*time travel*). `RESTORE TABLE ... TO VERSION AS OF n` (ou `TO TIMESTAMP AS OF '...'`) recrée l'état exact de la table à la version indiquée, *dans la même table* : le nom, les autorisations et les vues qui pointent vers elle restent valides.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option B :</strong> `VACUUM` supprime définitivement les fichiers de données obsolètes ; c'est une opération de maintenance irréversible qui, au contraire, détruit l'historique nécessaire à une restauration.</li>
+                <li><strong>Option C :</strong> Une propriété de table n'a aucun effet sur les données ; elle ne restaure rien.</li>
+                <li><strong>Option D :</strong> `CREATE TABLE AS SELECT` crée une *nouvelle* table (et échoue de toute façon si le nom existe déjà) : on perd les autorisations, les contraintes, l'historique et les vues rattachées.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Work with Delta Lake table history</span>
+    </div>
+
+    <!-- Question 43 -->
+    <div class="card">
+        <div class="question-number">Question 43 / 75</div>
+        <div class="statement">Vous devez garantir qu'aucune valeur négative ne puisse être écrite dans la colonne `price` de la table Delta `Catalog1.Schema1.products`. La solution doit rejeter les écritures invalides sans modifier le code d'ingestion. Que devez-vous faire ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li>A. `ALTER TABLE ... ALTER COLUMN price SET NOT NULL`</li>
+            <li>B. `ALTER TABLE ... ALTER COLUMN price SET DEFAULT 0`</li>
+            <li>C. Modifier le type de données de `price` en `DECIMAL(10,2)`</li>
+            <li class="correct-option">D. `ALTER TABLE ... ADD CONSTRAINT check_price CHECK (price &gt;= 0)` (Réponse correcte)</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            Une contrainte `CHECK` appliquée au schéma de la table Delta via `ALTER TABLE ... ADD CONSTRAINT ... CHECK (...)` valide une condition booléenne *au moment de l'écriture*. Toute transaction qui insère une valeur violant la condition est rejetée, et cela sans toucher au code d'ingestion : la contrainte est appliquée par le moteur, quel que soit le client (notebook, job, SQL).
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option A :</strong> `SET NOT NULL` interdit uniquement les valeurs `NULL` ; une valeur négative comme -99.99 reste parfaitement acceptée.</li>
+                <li><strong>Option B :</strong> Une valeur par défaut ne s'applique que lorsqu'aucune valeur n'est fournie : elle ne rejette rien et remplace silencieusement les valeurs manquantes au lieu de faire échouer l'écriture.</li>
+                <li><strong>Option C :</strong> `DECIMAL(10,2)` contraint la précision mais autorise toujours des valeurs négatives (par exemple -99.99).</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Manage tables and data layouts in Delta Lake</span>
+    </div>
+
+    <!-- Question 44 -->
+    <div class="card">
+        <div class="question-number">Question 44 / 75</div>
+        <div class="statement">Votre équipe souhaite décrire l'ensemble des ressources d'un projet (jobs, pipelines, notebooks, configurations) sous forme de code déclaratif versionné dans Git, afin d'automatiser les déploiements CI/CD vers plusieurs environnements. Quel outil devez-vous utiliser ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li>A. Databricks Repos</li>
+            <li>B. Delta Live Tables</li>
+            <li>C. Unity Catalog</li>
+            <li class="correct-option">D. Databricks Asset Bundles (DABs) (Réponse correcte)</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            Databricks Asset Bundles est l'approche « infrastructure as code » de Databricks. Un fichier `databricks.yml` décrit de façon déclarative les jobs, pipelines, notebooks et leurs paramètres, avec une notion de *targets* (dev, staging, production). Le bundle est versionné dans Git et déployé via la CLI, ce qui rend les promotions d'environnement reproductibles et auditables.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option A :</strong> Databricks Repos synchronise notebooks et fichiers avec un dépôt Git distant, mais ne décrit pas un projet complet ni ne gère le cycle de vie des jobs et pipelines par environnement.</li>
+                <li><strong>Option B :</strong> Delta Live Tables est un framework de construction de pipelines de données, pas un outil de packaging ni de déploiement CI/CD.</li>
+                <li><strong>Option C :</strong> Unity Catalog est la couche de gouvernance des données (catalogues, schémas, tables, autorisations), sans rapport avec le déploiement d'applications.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Develop Azure Databricks automation using Databricks Asset Bundles</span>
+    </div>
+
+    <!-- Question 45 -->
+    <div class="card">
+        <div class="question-number">Question 45 / 75</div>
+        <div class="statement">Votre projet est configuré avec Databricks Asset Bundles et définit une cible (*target*) nommée `production` dans `databricks.yml`. Quelle commande Databricks CLI devez-vous exécuter pour déployer le bundle dans cet environnement ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li>A. `databricks workspace import -e production`</li>
+            <li class="correct-option">B. `databricks bundle deploy -e production` (Réponse correcte)</li>
+            <li>C. `databricks jobs submit -e production`</li>
+            <li>D. `databricks bundle validate -e production`</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            `databricks bundle deploy -e production` déploie le contenu du bundle vers la cible indiquée par l'option `-e` (*environment*), en résolvant les variables et les surcharges définies pour cette cible dans `databricks.yml`. C'est cette commande qui crée ou met à jour les ressources (jobs, pipelines, fichiers) dans l'espace de travail cible.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option A :</strong> `workspace import` ne copie que des fichiers dans l'espace de travail ; il ignore la notion de bundle et de cible.</li>
+                <li><strong>Option C :</strong> `jobs submit` déclenche l'exécution d'un run, il ne déploie pas la définition des ressources.</li>
+                <li><strong>Option D :</strong> `bundle validate` vérifie la syntaxe et la cohérence de la configuration sans rien déployer — utile en pré-étape de CI, mais insuffisant pour mettre en production.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Develop Azure Databricks automation using Databricks Asset Bundles</span>
+    </div>
+
+    <!-- Question 46 -->
+    <div class="card">
+        <div class="question-number">Question 46 / 75</div>
+        <div class="statement">Vous exécutez une agrégation avec état (*stateful aggregation*) dans un flux Spark Structured Streaming et vous devez définir le seuil de tolérance au-delà duquel les données arrivant en retard sont ignorées, afin de borner la mémoire consommée par l'état. Quelle fonction devez-vous utiliser ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li>A. `.option("lateData", "10 minutes")`</li>
+            <li>B. `.trigger(processingTime="10 minutes")`</li>
+            <li>C. `.groupBy(window("event_time", "10 minutes"))`</li>
+            <li class="correct-option">D. `.withWatermark("event_time", "10 minutes")` (Réponse correcte)</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            Le filigrane (*watermark*) définit jusqu'à quel retard une donnée est encore prise en compte dans les calculs avec état. `withWatermark("event_time", "10 minutes")` indique au moteur que les événements dont l'horodatage est antérieur de plus de 10 minutes au maximum observé peuvent être écartés, ce qui lui permet de purger l'état correspondant. C'est la fonction dédiée à la fois à la gestion des données tardives et à la maîtrise de la mémoire de l'état.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option A :</strong> Il n'existe pas d'option `lateData` pour Structured Streaming ; les données tardives se pilotent par le filigrane.</li>
+                <li><strong>Option B :</strong> `trigger` règle la *fréquence* de déclenchement des micro-lots, pas la tolérance au retard des événements.</li>
+                <li><strong>Option C :</strong> `window(...)` découpe les événements en fenêtres temporelles, mais ne définit aucun seuil de tolérance : sans `withWatermark`, l'état croît indéfiniment.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Process streaming data with Structured Streaming</span>
+    </div>
+
+    <!-- Question 47 -->
+    <div class="card">
+        <div class="question-number">Question 47 / 75</div>
+        <div class="statement">Vous devez regrouper les événements d'un flux en intervalles de temps de taille fixe (fenêtres tumblantes) ou se chevauchant (fenêtres glissantes), afin de calculer des agrégats par période. Quelle fonction devez-vous utiliser ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li>A. `partitionBy()`</li>
+            <li>B. `groupByKey()`</li>
+            <li>C. `withWatermark()`</li>
+            <li class="correct-option">D. `window(timeColumn, windowDuration, slideDuration)` (Réponse correcte)</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            La fonction `window(timeColumn, windowDuration, slideDuration)` transforme une colonne d'horodatage en fenêtres temporelles utilisables dans un `groupBy`. Sans `slideDuration`, on obtient des fenêtres tumblantes (fixes, sans chevauchement) ; en fournissant un `slideDuration` inférieur à `windowDuration`, on obtient des fenêtres glissantes qui se chevauchent et dont les événements peuvent appartenir à plusieurs fenêtres.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option A :</strong> `partitionBy` organise le partitionnement physique des données écrites sur disque, sans notion de fenêtre temporelle.</li>
+                <li><strong>Option B :</strong> `groupByKey` regroupe par clé métier, pas par intervalle de temps.</li>
+                <li><strong>Option C :</strong> `withWatermark` gère le retard toléré des données ; elle complète le fenêtrage mais ne crée aucune fenêtre.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Process streaming data with Structured Streaming</span>
+    </div>
+
+    <!-- Question 48 -->
+    <div class="card">
+        <div class="question-number">Question 48 / 75</div>
+        <div class="statement">Vous exécutez un pipeline Lakeflow Spark Declarative Pipelines (Delta Live Tables) qui alimente des tables de reporting. Le pipeline doit traiter les nouvelles données disponibles, puis s'arrêter et libérer le calcul afin de réduire les coûts. Quel mode d'exécution devez-vous configurer ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li class="correct-option">A. Un pipeline déclenché (Triggered pipeline) (Réponse correcte)</li>
+            <li>B. Un pipeline continu (Continuous pipeline)</li>
+            <li>C. Une table de streaming (Streaming table)</li>
+            <li>D. Une vue matérialisée (Materialized view)</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            Un pipeline déclenché (*Triggered*) ingère et transforme les nouvelles données disponibles dès que possible, met à jour les tables cibles, puis arrête le calcul une fois le travail terminé : les ressources ne sont facturées que pendant l'exécution. C'est le mode recommandé pour les traitements planifiés ou par lots. Le mode continu, lui, maintient le cluster actif en permanence pour servir une faible latence, au prix d'un coût nettement supérieur.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option B :</strong> Le mode continu garde les ressources allumées en permanence pour traiter les données en flux quasi continu, ce qui va à l'encontre de l'objectif de réduction des coûts.</li>
+                <li><strong>Option C :</strong> Une table de streaming est un *type d'objet* du pipeline (traitement append-only), pas un mode d'exécution.</li>
+                <li><strong>Option D :</strong> Une vue matérialisée est également un type d'objet (résultats précalculés et rafraîchis), pas un mode d'exécution.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Build data pipelines using Delta Live Tables</span>
+    </div>
+
+    <!-- Question 49 -->
+    <div class="card">
+        <div class="question-number">Question 49 / 75</div>
+        <div class="statement">Une application métier dépose des PDF, des images et des fichiers audio dans un répertoire ADLS Gen2. Vous devez rendre ces fichiers accessibles aux utilisateurs d'Azure Databricks tout en les gouvernant avec Unity Catalog et sans les déplacer. Quel objet Unity Catalog devez-vous créer ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li>A. Une table externe (External table)</li>
+            <li class="correct-option">B. Un volume Unity Catalog (Volume) (Réponse correcte)</li>
+            <li>C. Un emplacement externe (External location)</li>
+            <li>D. Un identifiant de stockage (Storage credential)</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            Les volumes Unity Catalog sont conçus pour les données *non structurées et semi-structurées* (PDF, images, audio, JSON brut). Un volume se crée dans un schéma (`Catalog1.Schema1.Volume1`), donc tout le modèle de privilèges Unity Catalog (GRANT sur le volume, audit, lignée) s'applique aux fichiers, exactement comme pour une table. Les fichiers restent à leur emplacement : aucune copie n'est nécessaire.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option A :</strong> Une table (même externe) est faite pour des données tabulaires structurées ; elle est inadaptée à des PDF ou à des images.</li>
+                <li><strong>Option C :</strong> Un emplacement externe est un objet d'*administration du stockage* : il associe un storage credential à un chemin. Il ne fournit pas aux utilisateurs finaux un point d'accès gouverné aux fichiers.</li>
+                <li><strong>Option D :</strong> Un storage credential ne contient que l'identité d'accès au compte de stockage ; il ne référence aucun chemin ni aucun répertoire.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Manage non-tabular data with Unity Catalog Volumes</span>
+    </div>
+
+    <!-- Question 50 -->
+    <div class="card">
+        <div class="question-number">Question 50 / 75</div>
+        <div class="statement">Vous créez un volume Unity Catalog dans un schéma en utilisant la commande `CREATE VOLUME Catalog1.Schema1.Volume1`. Quel type de volume obtenez-vous, et quel est le comportement des fichiers si le volume est supprimé avec `DROP VOLUME` ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li>A. Un volume externe, dont les fichiers sont préservés sur le stockage lors d'un `DROP VOLUME`</li>
+            <li class="correct-option">B. Un volume géré, dont les fichiers sont supprimés du stockage lors d'un `DROP VOLUME` (Réponse correcte)</li>
+            <li>C. Un volume géré, dont les fichiers sont préservés sur le stockage lors d'un `DROP VOLUME`</li>
+            <li>D. Un volume externe, dont les fichiers sont supprimés du stockage lors d'un `DROP VOLUME`</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            Sans clause `LOCATION`, le volume est *géré* : Unity Catalog utilise l'emplacement de stockage par défaut associé au schéma. Comme pour une table gérée, l'objet Unity Catalog porte le cycle de vie des données — un `DROP VOLUME` supprime donc les fichiers sous-jacents. À l'inverse, un volume *externe* est créé avec une clause `LOCATION` pointant vers un chemin ADLS Gen2 : ses fichiers survivent à un `DROP VOLUME`, puisque Unity Catalog n'en gère que la référence.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option A :</strong> Elle décrit correctement le comportement d'un volume externe, mais ce n'est pas le volume créé ici : l'absence de clause `LOCATION` en fait un volume géré.</li>
+                <li><strong>Option C :</strong> Un volume géré ne préserve pas les fichiers lors de sa suppression — c'est précisément la différence avec un volume externe.</li>
+                <li><strong>Option D :</strong> Elle inverse le comportement réel : un volume externe préserve les fichiers sur le stockage.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Manage non-tabular data with Unity Catalog Volumes</span>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- Ajout : Examen Blanc DP-750 - Parcours "Configurer et ajuster -->
+    <!-- un environnement Azure Databricks" (Questions 51 a 75)        -->
+    <!-- ============================================================ -->
+
+    <!-- Question 51 -->
+    <div class="card">
+        <div class="question-number">Question 51 / 75</div>
+        <div class="statement">Votre entreprise doit unifier la gouvernance des données structurées et non structurées sur Azure Databricks. Vous devez appliquer des règles de sécurité au niveau des lignes et des colonnes tout en assurant la traçabilité (lineage) globale au niveau de l'entreprise. Quel composant Azure Databricks est directement responsable de la gouvernance au niveau des objets de données, et quel service Microsoft complète cette vision au niveau de l'entreprise ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li>A. Azure Active Directory ACLs et Azure Monitor</li>
+            <li>B. Databricks Repos et Azure Data Factory</li>
+            <li class="correct-option">C. Unity Catalog et Microsoft Purview (Réponse correcte)</li>
+            <li>D. DBFS Access Controls et Log Analytics</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            Unity Catalog gère la gouvernance fine (sécurité au niveau des lignes et des colonnes, contrôle d'accès) directement dans le Lakehouse Databricks. Microsoft Purview s'intègre à Unity Catalog pour offrir un catalogue d'entreprise global et un suivi de la lignée de données à travers tous les services cloud.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option A :</strong> Les ACL Azure AD s'appliquent au niveau du workspace et non aux objets de données ; Azure Monitor est un service de supervision, pas de gouvernance de données.</li>
+                <li><strong>Option B :</strong> Databricks Repos gère le versionnement du code et Azure Data Factory l'orchestration : aucun des deux ne catalogue les données ni n'applique de sécurité au niveau ligne et colonne.</li>
+                <li><strong>Option D :</strong> Les contrôles d'accès DBFS sont un mécanisme de système de fichiers hérité, incompatible avec la gouvernance Unity Catalog par ligne et par colonne ; Log Analytics est un outil de journalisation.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Explore Azure Databricks</span>
+    </div>
+
+    <!-- Question 52 -->
+    <div class="card">
+        <div class="question-number">Question 52 / 75</div>
+        <div class="statement">Dans le cadre d'un projet d'ingénierie de données sur Azure Databricks, vous devez identifier le type de charge de travail (workload) approprié pour exécuter des transformations ETL récurrentes de manière automatisée. Quelle fonctionnalité devez-vous privilégier ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li>A. Databricks SQL Warehouse Serverless</li>
+            <li>B. Databricks Interactive Notebooks</li>
+            <li>C. Databricks AutoML</li>
+            <li class="correct-option">D. Lakeflow Jobs (Workflows) (Réponse correcte)</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            Lakeflow Jobs (Workflows) est l'orchestrateur natif d'Azure Databricks, conçu pour planifier, exécuter et surveiller des pipelines de données automatisés et récurrents (ETL/ELT), avec gestion des dépendances, des reprises sur échec et des notifications.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option A :</strong> Les SQL Warehouses Serverless sont optimisés pour les requêtes SQL et BI interactives, pas pour l'orchestration planifiée de transformations.</li>
+                <li><strong>Option B :</strong> Les notebooks interactifs s'exécutent manuellement, cellule par cellule : ils ne fournissent ni planification ni automatisation fiable.</li>
+                <li><strong>Option C :</strong> AutoML génère et entraîne des modèles de machine learning ; il ne produit pas de pipelines ETL.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Explore Azure Databricks</span>
+    </div>
+
+    <!-- Question 53 -->
+    <div class="card">
+        <div class="question-number">Question 53 / 75</div>
+        <div class="statement">Une équipe d'analystes souhaite effectuer des requêtes ad-hoc rapides sur des tables Delta avec un temps de démarrage minimal et une gestion automatique de la capacité sans gérer de clusters. Quel type de charge de travail devez-vous leur attribuer ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li>A. Classic All-Purpose Cluster</li>
+            <li>B. Automated Job Cluster</li>
+            <li>C. Single-node Compute</li>
+            <li class="correct-option">D. Databricks SQL Warehouse (Serverless) (Réponse correcte)</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            Les SQL Warehouses Serverless sont optimisés pour les requêtes BI et SQL interactives. Ils démarrent en quelques secondes et ajustent automatiquement leur capacité (mise à l'échelle) sans aucune gestion manuelle de clusters.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option A :</strong> Un cluster Classic All-Purpose met plusieurs minutes à démarrer et exige une gestion manuelle du dimensionnement et de la mise à l'échelle.</li>
+                <li><strong>Option B :</strong> Un cluster de job automatisé est conçu pour exécuter des traitements planifiés ; il n'est pas destiné aux requêtes ad-hoc interactives et ne se prête pas au partage entre analystes.</li>
+                <li><strong>Option C :</strong> Un calcul mono-nœud n'apporte ni la gestion automatique de capacité ni les optimisations SQL/BI attendues pour ce cas d'usage.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Explore Azure Databricks</span>
+    </div>
+
+    <!-- Question 54 -->
+    <div class="card">
+        <div class="question-number">Question 54 / 75</div>
+        <div class="statement">Vous configurez un nouvel espace de travail Azure Databricks. Pour activer la gouvernance centralisée basée sur Unity Catalog, quelle étape préalable est absolument obligatoire au niveau de la structure d'administration ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li>A. Créer un cluster All-Purpose avec la version Databricks Runtime Light.</li>
+            <li>B. Monter un compte de stockage Azure Blob avec DBFS (Databricks File System).</li>
+            <li class="correct-option">C. Associer le workspace à un Metastore Unity Catalog créé au niveau du compte (Account level). (Réponse correcte)</li>
+            <li>D. Activer le mode Single-User sur tous les clusters du workspace.</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            Unity Catalog nécessite qu'un Metastore soit créé au niveau du compte Azure Databricks (Account Level), puis associé aux différents Workspaces concernés. C'est cette association qui rattache le workspace au catalogue central et rend la gouvernance transversale possible.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option A :</strong> Le choix de la version de Databricks Runtime est sans rapport avec l'activation de la gouvernance ; l'édition "Light" n'existe plus.</li>
+                <li><strong>Option B :</strong> Le montage d'un stockage via DBFS est une approche héritée qui ne fournit ni catalogue central ni contrôle d'accès gouverné.</li>
+                <li><strong>Option D :</strong> Le mode d'accès Single-User concerne l'isolation d'un cluster, pas le rattachement du workspace à un metastore Unity Catalog.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Explore Azure Databricks</span>
+    </div>
+
+    <!-- Question 55 -->
+    <div class="card">
+        <div class="question-number">Question 55 / 75</div>
+        <div class="statement">Lors de l'exploration des fonctionnalités d'Azure Databricks, quelle est la méthode recommandée pour ingérer de gros volumes de fichiers CSV ou JSON stockés dans Azure Data Lake Storage Gen2 avec un minimum de code personnalisé et de façon idempotente ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li class="correct-option">A. Utiliser la commande SQL <code>COPY INTO</code>. (Réponse correcte)</li>
+            <li>B. Exécuter une boucle <code>spark.read</code> personnalisée en Python.</li>
+            <li>C. Exporter les fichiers via Azure Data Factory en format Parquet puis les importer.</li>
+            <li>D. Téléverser manuellement les fichiers via l'interface graphique du workspace.</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            La commande SQL <code>COPY INTO</code> permet d'ingérer efficacement et de manière idempotente des fichiers depuis un stockage objet vers une table Delta Lake : les fichiers déjà traités sont suivis et ne sont pas dupliqués lors des exécutions suivantes, avec un minimum de code.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option B :</strong> Une boucle <code>spark.read</code> maison ne tient aucun registre des fichiers déjà ingérés : elle n'est pas idempotente sans développement supplémentaire de suivi d'état.</li>
+                <li><strong>Option C :</strong> Le passage intermédiaire par Azure Data Factory et une conversion Parquet ajoute une copie et une étape inutiles.</li>
+                <li><strong>Option D :</strong> Le téléversement manuel n'est ni automatisable, ni industrialisable, ni idempotent.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Explore Azure Databricks</span>
+    </div>
+
+    <!-- Question 56 -->
+    <div class="card">
+        <div class="question-number">Question 56 / 75</div>
+        <div class="statement">L'architecture d'Azure Databricks repose sur la séparation entre le Plan de Contrôle (Control Plane) et le Plan de Calcul (Compute Plane). Laquelle des affirmations suivantes décrit correctement l'emplacement et la responsabilité de ces deux plans dans un déploiement classique ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li class="correct-option">A. Le plan de contrôle (hébergé par Microsoft) gère l'interface, les notebooks et la gestion des jobs, tandis que le plan de calcul (exécuté dans le VNet client ou dans un plan géré) exécute les clusters Spark. (Réponse correcte)</li>
+            <li>B. Le plan de contrôle s'exécute dans le sous-réseau virtuel (VNet) du client, tandis que le plan de calcul est hébergé dans le sous-réseau géré par Microsoft.</li>
+            <li>C. Les deux plans s'exécutent entièrement dans le compte de stockage Azure Data Lake du client.</li>
+            <li>D. Le plan de calcul gère uniquement les métadonnées et les clés de chiffrement, tandis que le plan de contrôle exécute les exécuteurs Spark.</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            Le Control Plane est hébergé dans l'abonnement Microsoft/Databricks et prend en charge l'interface web, la gestion des utilisateurs, les notebooks et l'orchestration des jobs. Le Compute Plane exécute les traitements Spark dans l'infrastructure du client (VNet injecté) ou dans un plan de calcul géré.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option B :</strong> Elle inverse les deux plans : le plan de contrôle n'est pas hébergé dans le VNet du client.</li>
+                <li><strong>Option C :</strong> Aucun des deux plans ne s'exécute dans le compte de stockage du client ; celui-ci héberge uniquement les données.</li>
+                <li><strong>Option D :</strong> Elle inverse les responsabilités : c'est le plan de contrôle qui gère les métadonnées, et le plan de calcul qui exécute Spark.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Understand Azure Databricks architecture</span>
+    </div>
+
+    <!-- Question 57 -->
+    <div class="card">
+        <div class="question-number">Question 57 / 75</div>
+        <div class="statement">Quelle est la différence fondamentale entre l'architecture de calcul classique (Classic Compute) et l'architecture sans serveur (Serverless Compute) dans Azure Databricks ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li>A. Classic Compute n'utilise pas de machines virtuelles Azure, alors que Serverless en utilise.</li>
+            <li>B. Classic Compute est réservé exclusivement à Databricks SQL, tandis que Serverless est réservé à la science des données.</li>
+            <li class="correct-option">C. Serverless Compute exécute les ressources de calcul dans un plan géré par Databricks avec un démarrage quasi instantané, sans que le client n'ait à provisionner de VM dans son propre abonnement Azure. (Réponse correcte)</li>
+            <li>D. Serverless Compute requiert l'activation manuelle du mécanisme d'auto-scaling sur chaque cluster.</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            En mode Serverless, le calcul s'exécute dans un plan géré par Databricks : les ressources sont disponibles quasi instantanément, sans provisionnement ni dimensionnement de VM dans l'abonnement Azure du client.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option A :</strong> Classic Compute s'exécute bien sur des machines virtuelles Azure provisionnées dans l'abonnement du client ; l'affirmation est donc inverse de la réalité.</li>
+                <li><strong>Option B :</strong> Aucun des deux modes n'est réservé à un domaine : SQL comme la science des données peuvent s'exécuter dans les deux.</li>
+                <li><strong>Option D :</strong> Le calcul Serverless ne nécessite aucun provisionnement ni réglage manuel d'auto-scaling : la capacité est gérée automatiquement.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Understand Azure Databricks architecture</span>
+    </div>
+
+    <!-- Question 58 -->
+    <div class="card">
+        <div class="question-number">Question 58 / 75</div>
+        <div class="statement">Dans le cadre de l'organisation des données avec Unity Catalog, quelle est la distinction clé entre le stockage géré (Managed Storage) d'un catalogue ou d'un schéma et le stockage externe (External Locations) ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li>A. Le stockage géré stocke les données sur le disque local du nœud Driver Spark.</li>
+            <li>B. Le stockage externe ne prend pas en charge le format Delta Lake.</li>
+            <li class="correct-option">C. Le stockage géré est configuré au niveau du Metastore, du Catalogue ou du Schéma pour héberger automatiquement les tables gérées, sans spécifier de chemin <code>LOCATION</code>. (Réponse correcte)</li>
+            <li>D. Le stockage géré supprime l'ensemble des données de l'abonnement Azure si le workspace est supprimé.</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            Le Managed Storage définit un emplacement par défaut dans le stockage cloud pour les tables gérées : l'utilisateur n'a pas besoin de renseigner de chemin d'accès lors d'un <code>CREATE TABLE</code>. Les External Locations, elles, référencent explicitement un chemin ADLS Gen2 existant dont le cycle de vie des fichiers reste hors du contrôle d'Unity Catalog.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option A :</strong> Le stockage géré réside dans le stockage cloud (ADLS Gen2), jamais sur le disque local du nœud Driver.</li>
+                <li><strong>Option B :</strong> Le stockage externe prend parfaitement en charge le format Delta Lake : c'est même le format recommandé.</li>
+                <li><strong>Option D :</strong> Le metastore et l'emplacement de stockage géré sont définis au niveau du compte, indépendamment du cycle de vie d'un workspace donné.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Understand Azure Databricks architecture</span>
+    </div>
+
+    <!-- Question 59 -->
+    <div class="card">
+        <div class="question-number">Question 59 / 75</div>
+        <div class="statement">Vous devez stocker des données sensibles dans un environnement Azure Databricks et vous assurer que les données au repos sont chiffrées à l'aide de clés gérées par le client (Customer-Managed Keys - CMK). Sur quels éléments de l'architecture pouvez-vous appliquer des clés CMK ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li>A. Uniquement sur les disques locaux des workers Spark.</li>
+            <li class="correct-option">B. Sur le stockage du plan de contrôle (stockage DBFS racine et services gérés) et sur les disques de stockage du plan de calcul. (Réponse correcte)</li>
+            <li>C. Uniquement sur les requêtes SQL transmises à la base de données interne.</li>
+            <li>D. Les clés CMK ne sont pas prises en charge dans la version Azure de Databricks.</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            Azure Databricks permet d'apporter vos propres clés (CMK) pour chiffrer à la fois les services gérés du Control Plane (notebooks, métadonnées, stockage DBFS racine) et les disques de stockage du Compute Plane.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option A :</strong> Le chiffrement par CMK ne se limite pas aux disques des workers : il couvre également le stockage des services gérés.</li>
+                <li><strong>Option C :</strong> Le chiffrement CMK protège les données au repos sur le stockage et les disques ; il ne s'applique pas au transit des requêtes SQL.</li>
+                <li><strong>Option D :</strong> Les clés CMK sont bien prises en charge sur Azure Databricks, via Azure Key Vault.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Understand Azure Databricks architecture</span>
+    </div>
+
+    <!-- Question 60 -->
+    <div class="card">
+        <div class="question-number">Question 60 / 75</div>
+        <div class="statement">Dans la hiérarchie des comptes Azure Databricks (Account Hierarchy), quel est le rôle du niveau "Account Admin" par rapport au rôle de "Workspace Admin" ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li>A. L'Account Admin gère les notebooks et les bibliothèques au niveau d'un seul workspace.</li>
+            <li>B. Le Workspace Admin peut créer des metastores Unity Catalog transversaux sans autorisation préalable.</li>
+            <li>C. L'Account Admin est un rôle hérité automatiquement de l'abonnement Azure Reader.</li>
+            <li class="correct-option">D. L'Account Admin gère la création des metastores Unity Catalog, la création des workspaces et les identités au niveau du compte global. (Réponse correcte)</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            L'Account Admin opère au niveau global de l'organisation : il crée les workspaces, gère la facturation globale et provisionne les metastores Unity Catalog. Le Workspace Admin, lui, n'administre que son espace de travail local.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option A :</strong> La gestion des notebooks et des bibliothèques d'un workspace relève du Workspace Admin, non de l'Account Admin.</li>
+                <li><strong>Option B :</strong> Seul un Account Admin peut créer et attribuer des metastores Unity Catalog ; un Workspace Admin n'en a pas le privilège.</li>
+                <li><strong>Option C :</strong> Les rôles Azure Databricks ne sont pas hérités du rôle RBAC Azure Reader : ils sont attribués explicitement dans la console de compte.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Understand Azure Databricks architecture</span>
+    </div>
+
+    <!-- Question 61 -->
+    <div class="card">
+        <div class="question-number">Question 61 / 75</div>
+        <div class="statement">Vous devez intégrer un Lakehouse Azure Databricks avec Microsoft Fabric afin que les équipes d'analyse sur Fabric puissent interroger les tables Delta de Databricks sans dupliquer physiquement les fichiers de données. Quelle fonctionnalité devez-vous utiliser ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li class="correct-option">A. Raccourcis OneLake (OneLake Shortcuts) pointant vers Azure Data Lake Storage Gen2 (Réponse correcte)</li>
+            <li>B. Azure Data Factory Copy Activity en mode binaire</li>
+            <li>C. Exporter les tables au format CSV vers un serveur FTP</li>
+            <li>D. Connecteur JDBC/ODBC direct sur le cluster All-Purpose</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            Les raccourcis OneLake dans Microsoft Fabric permettent de lier directement des dossiers ou des tables hébergés sur ADLS Gen2 (au format Delta) sans recopie physique des données : Fabric lit les fichiers là où ils se trouvent.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option B :</strong> Une activité de copie ADF, même en mode binaire, duplique physiquement les données — ce que la consigne exclut explicitement.</li>
+                <li><strong>Option C :</strong> L'export CSV vers FTP duplique les données et abandonne le format Delta ainsi que le schéma.</li>
+                <li><strong>Option D :</strong> Un connecteur JDBC/ODBC exige un cluster actif et ne s'intègre pas au modèle de stockage unifié OneLake de Fabric.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Understand Azure Databricks integrations</span>
+    </div>
+
+    <!-- Question 62 -->
+    <div class="card">
+        <div class="question-number">Question 62 / 75</div>
+        <div class="statement">Un développeur souhaitant utiliser Visual Studio Code sur sa machine locale pour développer, tester et déboguer du code PySpark qui s'exécute directement sur un cluster Azure Databricks distant doit utiliser :</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li class="correct-option">A. L'extension Azure Databricks pour VS Code exploitant Databricks Connect (Réponse correcte)</li>
+            <li>B. Databricks CLI v0.12 uniquement</li>
+            <li>C. Azure DevOps Pipeline avec agents auto-hébergés</li>
+            <li>D. L'intégration Git native sans connexion au cluster</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            L'extension Databricks pour VS Code s'appuie sur Databricks Connect (gRPC) pour rediriger l'exécution du code Spark écrit en local vers un cluster Databricks distant, ce qui permet le développement, le test et le débogage pas à pas depuis l'IDE.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option B :</strong> La CLI Databricks sert à l'administration et au déploiement automatisé ; elle n'exécute pas de code PySpark et n'offre pas de débogage interactif.</li>
+                <li><strong>Option C :</strong> Un pipeline Azure DevOps avec agents auto-hébergés relève de l'intégration continue : il exécute des tâches automatisées, pas du débogage local.</li>
+                <li><strong>Option D :</strong> L'intégration Git versionne le code dans le workspace, mais n'établit aucune connexion d'exécution vers un cluster distant.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Understand Azure Databricks integrations</span>
+    </div>
+
+    <!-- Question 63 -->
+    <div class="card">
+        <div class="question-number">Question 63 / 75</div>
+        <div class="statement">Pour connecter Power BI à un Lakehouse Azure Databricks avec les meilleures performances de temps de réponse interactif et la prise en charge des gros volumes de données sans importer physiquement les données dans Power BI, quel mode de connexion devez-vous privilégier avec les SQL Warehouses ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li>A. Import Mode</li>
+            <li>B. Web API REST</li>
+            <li class="correct-option">C. DirectQuery (ou Direct Lake selon l'architecture) (Réponse correcte)</li>
+            <li>D. Dynamic File Stream</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            DirectQuery permet à Power BI de déléguer l'exécution des requêtes analytiques directement au SQL Warehouse d'Azure Databricks, sans charger les données en mémoire côté Power BI : c'est le mode adapté aux gros volumes et aux données en temps quasi réel.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option A :</strong> Le mode Import copie les données dans le modèle Power BI, ce qui contredit l'exigence d'absence d'import physique et alourdit les rafraîchissements.</li>
+                <li><strong>Option B :</strong> Une Web API REST n'est pas un mode de connexion analytique natif de Power BI vers Databricks.</li>
+                <li><strong>Option D :</strong> Le mode "Dynamic File Stream" n'existe pas comme mode de connexion Power BI.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Understand Azure Databricks integrations</span>
+    </div>
+
+    <!-- Question 64 -->
+    <div class="card">
+        <div class="question-number">Question 64 / 75</div>
+        <div class="statement">Vous souhaitez gouverner l'ensemble du patrimoine de données (Azure Databricks, Azure SQL Database, Microsoft Fabric) à partir d'un seul catalogue d'entreprise. Comment Azure Databricks s'intègre-t-il avec Microsoft Purview ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li>A. Microsoft Purview remplace complètement le catalogue Unity Catalog.</li>
+            <li>B. Il faut écrire des scripts Python personnalisés exécutés toutes les nuits pour extraire le schéma.</li>
+            <li class="correct-option">C. Le connecteur Unity Catalog vers Microsoft Purview synchronise automatiquement les métadonnées, les schémas et la lignée (lineage) vers Purview. (Réponse correcte)</li>
+            <li>D. L'intégration n'est possible qu'en téléversant des fichiers Excel de dictionnaire de données.</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            Le connecteur natif Microsoft Purview - Unity Catalog permet de moissonner automatiquement la structure des données et la traçabilité (lineage) générées dans Azure Databricks, et de les exposer dans le catalogue d'entreprise aux côtés des autres sources.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option A :</strong> Purview complète Unity Catalog au niveau de l'entreprise, il ne le remplace pas : Unity Catalog reste le mécanisme de gouvernance interne au Lakehouse.</li>
+                <li><strong>Option B :</strong> Des scripts Python nocturnes sont inutiles puisque le connecteur natif assure la synchronisation des métadonnées et du lineage.</li>
+                <li><strong>Option D :</strong> Le téléversement de fichiers Excel n'offre ni automatisation, ni lineage, ni synchronisation continue.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Understand Azure Databricks integrations</span>
+    </div>
+
+    <!-- Question 65 -->
+    <div class="card">
+        <div class="question-number">Question 65 / 75</div>
+        <div class="statement">Quelle solution permet d'orchestrer un pipeline de données complexe combinant des activités Azure Data Factory, des notebooks Azure Databricks et des rafraîchissements de modèles Power BI tout en conservant la traçabilité ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li>A. Utiliser uniquement des scripts Bash lancés via SSH sur le nœud Driver Spark.</li>
+            <li>B. Utiliser Power Automate Webhooks uniquement.</li>
+            <li>C. Utiliser Databricks Connect depuis un navigateur web.</li>
+            <li class="correct-option">D. Utiliser Azure Data Factory (ou Synapse Pipelines) avec les activités Azure Databricks Notebook / Job. (Réponse correcte)</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            Azure Data Factory possède des activités natives Databricks (Notebook, Jar, Python) qui permettent d'intégrer Databricks au sein d'orchestrations hybrides d'entreprise, avec gestion des dépendances, surveillance centralisée et traçabilité de bout en bout.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option A :</strong> Des scripts Bash lancés en SSH n'offrent ni orchestration, ni dépendances, ni historique d'exécution exploitable.</li>
+                <li><strong>Option B :</strong> Power Automate est un outil d'automatisation de flux métier, pas un orchestrateur de pipelines de données.</li>
+                <li><strong>Option C :</strong> Databricks Connect est un outil de développement depuis un IDE ; il n'orchestre pas de pipelines.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Understand Azure Databricks integrations</span>
+    </div>
+
+    <!-- Question 66 -->
+    <div class="card">
+        <div class="question-number">Question 66 / 75</div>
+        <div class="statement">Vous devez configurer un cluster de traitement par lots (batch) nocturne très critique dont l'échec d'exécution impacterait la production. Comment devez-vous configurer la stratégie d'instances (Instance Types) pour optimiser les coûts tout en garantissant la stabilité du job ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li>A. Utiliser des instances Spot pour le nœud Driver et pour tous les nœuds Worker.</li>
+            <li class="correct-option">B. Utiliser une instance On-Demand pour le nœud Driver et des instances On-Demand (ou un mélange maîtrisé) pour les nœuds Worker. (Réponse correcte)</li>
+            <li>C. Utiliser un cluster Single-Node avec préemption activée.</li>
+            <li>D. Ne pas utiliser de cluster de job mais uniquement un cluster All-Purpose partagé.</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            Le nœud Driver orchestre le job Spark : s'il est interrompu — ce qui peut arriver avec les instances Spot — tout le job échoue. Le Driver doit donc toujours reposer sur une instance On-Demand pour les traitements critiques, les instances Spot restant réservées, avec parcimonie, aux workers.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option A :</strong> Placer le Driver sur une instance Spot expose le job entier à une interruption pour raison de capacité Azure.</li>
+                <li><strong>Option C :</strong> Un cluster Single-Node supprime toute distribution du calcul et la préemption augmente encore le risque d'interruption.</li>
+                <li><strong>Option D :</strong> Un cluster All-Purpose partagé coûte plus cher en DBU et n'isole pas les ressources du job ; un cluster de job dédié est recommandé.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Configure and manage compute in Azure Databricks</span>
+    </div>
+
+    <!-- Question 67 -->
+    <div class="card">
+        <div class="question-number">Question 67 / 75</div>
+        <div class="statement">Quelle est la règle concernant la facturation des unités Databricks (DBU) lors de l'utilisation d'un Instance Pool (pool d'instances) contenant des instances en attente (idle) ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li>A. Azure Databricks facture les DBU pleines même si les instances du pool sont inactives.</li>
+            <li class="correct-option">B. Azure Databricks ne facture PAS de DBU pour les instances inactives d'un pool, mais les coûts des VM du fournisseur cloud (Azure) continuent de s'appliquer. (Réponse correcte)</li>
+            <li>C. Les instances inactives d'un pool sont entièrement gratuites (aucun coût Azure ni DBU).</li>
+            <li>D. Les pools d'instances ne sont utilisables qu'avec le calcul Serverless.</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            Tant qu'une VM est en attente dans un Instance Pool (idle), Databricks ne facture aucune DBU. En revanche, la VM étant allouée sur Azure, le coût standard d'infrastructure Azure reste dû : il faut donc dimensionner le pool au plus juste.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option A :</strong> Aucune DBU n'est facturée tant que l'instance du pool n'exécute pas de charge de travail Databricks.</li>
+                <li><strong>Option C :</strong> Les instances restent provisionnées sur Azure : les coûts de VM continuent de courir même sans DBU.</li>
+                <li><strong>Option D :</strong> Les Instance Pools s'utilisent avec le calcul classique ; ils n'ont pas de lien avec le calcul Serverless.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Configure and manage compute in Azure Databricks</span>
+    </div>
+
+    <!-- Question 68 -->
+    <div class="card">
+        <div class="question-number">Question 68 / 75</div>
+        <div class="statement">Vous devez partager un cluster interactif entre plusieurs data scientists. Pour garantir que chaque utilisateur ne puisse pas accéder aux données des autres utilisateurs non autorisés et respecter la gouvernance Unity Catalog, quel mode d'accès au cluster (Access Mode) devez-vous sélectionner ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li class="correct-option">A. Shared (Isolation Shared) (Réponse correcte)</li>
+            <li>B. Single User</li>
+            <li>C. No Isolation Allowed</li>
+            <li>D. Legacy Passthrough</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            Le mode d'accès "Shared" offre une isolation multi-utilisateurs sécurisée : il permet d'exécuter des requêtes SQL et Python tout en appliquant les contrôles d'accès d'Unity Catalog, chaque utilisateur ne voyant que les données auxquelles il est autorisé.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option B :</strong> Le mode Single User réserve le cluster à un seul utilisateur : il ne répond pas à l'exigence de partage.</li>
+                <li><strong>Option C :</strong> Un mode sans isolation multi-utilisateurs n'assure aucune séparation des accès aux données entre utilisateurs.</li>
+                <li><strong>Option D :</strong> Le mode hérité Passthrough contourne les contrôles de gouvernance d'Unity Catalog et n'offre pas l'isolation recherchée.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Configure and manage compute in Azure Databricks</span>
+    </div>
+
+    <!-- Question 69 -->
+    <div class="card">
+        <div class="question-number">Question 69 / 75</div>
+        <div class="statement">Un travail Spark volumineux échoue fréquemment en raison de problèmes de mémoire sur le Driver (Out Of Memory - OOM). Quelle est la meilleure action corrective concernant la configuration du cluster ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li>A. Augmenter le nombre de nœuds Worker.</li>
+            <li>B. Activer uniquement l'auto-scaling.</li>
+            <li>C. Passer le cluster en mode Single-Node.</li>
+            <li class="correct-option">D. Sélectionner un type d'instance avec une capacité mémoire (RAM) plus élevée pour le nœud Driver. (Réponse correcte)</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            Les erreurs OOM côté Driver surviennent généralement lors des opérations de collecte de données vers le driver (par exemple <code>.collect()</code>) ou lors de la manipulation de larges structures en mémoire. Ajouter des workers n'y change rien : il faut choisir un type de VM offrant plus de RAM pour le nœud Driver.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option A :</strong> Le nombre de workers augmente la capacité de traitement distribué, pas la mémoire disponible sur le Driver.</li>
+                <li><strong>Option B :</strong> L'auto-scaling ajuste le nombre de workers ; il n'accroît pas la RAM du nœud Driver.</li>
+                <li><strong>Option C :</strong> Le mode Single-Node concentre driver et workers sur une seule machine et ne résout pas le manque de mémoire du Driver.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Configure and manage compute in Azure Databricks</span>
+    </div>
+
+    <!-- Question 70 -->
+    <div class="card">
+        <div class="question-number">Question 70 / 75</div>
+        <div class="statement">Quelle est la méthode recommandée pour installer des bibliothèques Python spécifiques à une tâche sans impacter les autres utilisateurs d'un cluster partagé dans Azure Databricks ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li class="correct-option">A. Utiliser des bibliothèques incluses au niveau du notebook via <code>%pip install &lt;library_name&gt;</code>. (Réponse correcte)</li>
+            <li>B. Installer la bibliothèque au niveau global du cluster via l'interface Compute.</li>
+            <li>C. Modifier l'image de base de la machine virtuelle du driver via SSH.</li>
+            <li>D. Déposer le fichier .whl directement à la racine DBFS <code>/dbfs/databricks/</code>.</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            La commande <code>%pip install</code> installe les dépendances dans l'environnement virtuel isolé de la session du notebook en cours. Les versions installées restent donc locales à cette session, ce qui évite tout conflit avec les autres utilisateurs d'un cluster partagé.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option B :</strong> Une installation au niveau du cluster s'applique à tous les utilisateurs du cluster partagé et peut provoquer des conflits de versions.</li>
+                <li><strong>Option C :</strong> Modifier l'image de base de la VM n'est ni une pratique supportée, ni une opération persistante, et affecte l'ensemble des utilisateurs.</li>
+                <li><strong>Option D :</strong> Déposer un fichier <code>.whl</code> dans DBFS ne l'installe pas dans l'environnement Python du notebook : il faut ensuite l'installer explicitement.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Configure and manage compute in Azure Databricks</span>
+    </div>
+
+    <!-- Question 71 -->
+    <div class="card">
+        <div class="question-number">Question 71 / 75</div>
+        <div class="statement">Dans Unity Catalog, quelle est la structure exacte du namespace à trois niveaux obligatoire pour référencer un objet de données (comme une table ou une vue) dans une requête SQL ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li>A. <code>workspace.schema.table</code></li>
+            <li>B. <code>database.table.column</code></li>
+            <li class="correct-option">C. <code>catalog.schema.object</code> (ex. : <code>catalog.schema.table</code>) (Réponse correcte)</li>
+            <li>D. <code>metastore.catalog.table</code></li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            Unity Catalog utilise un espace de noms à trois niveaux strict : <code>catalog.schema.table</code> (ou vue, ou volume). Ce namespace est la clé de voûte de la gouvernance : les privilèges peuvent être accordés à chacun de ces niveaux.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option A :</strong> Le workspace n'est pas le premier niveau du namespace Unity Catalog ; le catalogue l'est.</li>
+                <li><strong>Option B :</strong> Cette notation mélange un objet (table) et un attribut (colonne) : une colonne ne fait pas partie du namespace des objets.</li>
+                <li><strong>Option D :</strong> Le metastore est un conteneur d'administration de niveau compte ; il n'apparaît pas dans le chemin à trois niveaux utilisé dans les requêtes.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Manage database objects with Unity Catalog</span>
+    </div>
+
+    <!-- Question 72 -->
+    <div class="card">
+        <div class="question-number">Question 72 / 75</div>
+        <div class="statement">Quelle est la différence fondamentale entre une Table Gérée (Managed Table) et une Table Externe (External Table) lors de l'exécution de la commande <code>DROP TABLE</code> dans Unity Catalog ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li>A. Pour une table gérée, seules les métadonnées sont supprimées ; pour une table externe, tout est supprimé.</li>
+            <li class="correct-option">B. Pour une table gérée, les métadonnées ET les fichiers de données physiques sous-jacents sont supprimés. Pour une table externe, seules les métadonnées sont supprimées. (Réponse correcte)</li>
+            <li>C. Les tables externes ne peuvent pas être supprimées via SQL.</li>
+            <li>D. Il n'y a aucune différence de comportement lors du <code>DROP TABLE</code>.</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            Supprimer une table gérée supprime la définition dans le metastore ET le dossier de stockage physique. Supprimer une table externe supprime la définition dans le catalogue mais conserve les fichiers bruts intacts sur le stockage : Unity Catalog n'en gère que la référence.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option A :</strong> Elle inverse le comportement réel des deux types de tables.</li>
+                <li><strong>Option C :</strong> Les tables externes se suppriment parfaitement via SQL ; seule leur donnée physique est préservée.</li>
+                <li><strong>Option D :</strong> Le comportement diffère précisément sur le point du cycle de vie des fichiers de données.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Manage database objects with Unity Catalog</span>
+    </div>
+
+    <!-- Question 73 -->
+    <div class="card">
+        <div class="question-number">Question 73 / 75</div>
+        <div class="statement">Vous devez interroger des tables hébergées dans une base de données PostgreSQL externe directement depuis Azure Databricks sans effectuer d'ETL préalable ni dupliquer les données. Quelle fonctionnalité de Unity Catalog devez-vous utiliser ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li>A. Un Volume Externe (External Volume)</li>
+            <li class="correct-option">B. Un Catalogue Étranger (Foreign Catalog) via Lakehouse Federation (Réponse correcte)</li>
+            <li>C. Un partage Delta Sharing</li>
+            <li>D. Une Vue Matérialisée (Materialized View)</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            Lakehouse Federation permet de configurer des "Foreign Catalogs" afin d'exécuter des requêtes fédérées directement sur des SGBD distants (PostgreSQL, Snowflake, SQL Server, etc.), tout en bénéficiant de la gouvernance et du namespace Unity Catalog, sans copie des données.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option A :</strong> Un volume stocke et gouverne des fichiers non structurés : il ne fédère pas l'accès à une base de données relationnelle externe.</li>
+                <li><strong>Option C :</strong> Delta Sharing partage des données Delta entre organisations ou consommateurs ; il ne fournit pas d'accès fédéré à un SGBD tiers.</li>
+                <li><strong>Option D :</strong> Une vue matérialisée précalcule et stocke le résultat d'une requête : cela constitue une duplication des données, exclue par la consigne.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Manage database objects with Unity Catalog</span>
+    </div>
+
+    <!-- Question 74 -->
+    <div class="card">
+        <div class="question-number">Question 74 / 75</div>
+        <div class="statement">Dans Unity Catalog, quel objet devez-vous utiliser pour stocker, gérer et gouverner l'accès à des données non structurées (images, fichiers audio, PDF, fichiers d'inspection) ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li>A. External Table</li>
+            <li>B. Streaming Table</li>
+            <li class="correct-option">C. Volume (Managed ou External Volume) (Réponse correcte)</li>
+            <li>D. Delta Lake Index</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            Les Volumes sont des objets Unity Catalog spécialement conçus pour gouverner et donner accès aux fichiers non structurés (images, PDF, CSV bruts, fichiers audio, etc.), avec les mêmes mécanismes de privilèges et de lineage que les tables.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option A :</strong> Une table externe est conçue pour des données tabulaires structurées, pas pour des fichiers arbitraires.</li>
+                <li><strong>Option B :</strong> Une Streaming Table est destinée à l'ingestion continue de données tabulaires, pas au stockage de fichiers non structurés.</li>
+                <li><strong>Option D :</strong> Un index Delta Lake est une structure d'optimisation des lectures au sein d'une table ; ce n'est pas un objet de gouvernance de fichiers.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Manage database objects with Unity Catalog</span>
+    </div>
+
+    <!-- Question 75 -->
+    <div class="card">
+        <div class="question-number">Question 75 / 75</div>
+        <div class="statement">Dans le cadre de l'utilisation des fonctionnalités d'IA et de Business Intelligence d'Azure Databricks, à quoi sert AI/BI Genie ?</div>
+        <strong>Propositions de réponse :</strong>
+        <ul class="options-list">
+            <li>A. À générer automatiquement des pipelines ETL en PySpark à partir de schémas JSON.</li>
+            <li>B. À chiffrer les colonnes contenant des PII (données personnelles) dans Delta Lake.</li>
+            <li>C. À remplacer l'optimiseur de requêtes Catalyst dans Apache Spark.</li>
+            <li class="correct-option">D. À fournir une interface conversationnelle basée sur l'IA permettant aux utilisateurs métier de poser des questions en langage naturel et d'obtenir des réponses analytiques précises sur les données du Lakehouse. (Réponse correcte)</li>
+        </ul>
+        <div class="explanation">
+            <div class="explanation-title">Justification :</div>
+            AI/BI Genie est un assistant conversationnel basé sur l'IA qui interprète les questions en langage naturel formulées par des utilisateurs non techniques et les traduit en requêtes SQL exécutées sur le Lakehouse, en respectant les droits Unity Catalog de l'utilisateur.
+            <div class="explanation-title" style="margin-top: 8px;">Pourquoi les autres options sont incorrectes :</div>
+            <ul class="incorrect-reasons">
+                <li><strong>Option A :</strong> La génération de pipelines ETL n'entre pas dans le périmètre de Genie, qui se limite à l'interrogation analytique en langage naturel.</li>
+                <li><strong>Option B :</strong> Le masquage et le chiffrement des données personnelles relèvent des column masks et des fonctions de masquage, pas de Genie.</li>
+                <li><strong>Option C :</strong> Genie produit du SQL destiné à Catalyst ; il ne remplace en aucun cas l'optimiseur de requêtes de Spark.</li>
+            </ul>
+        </div>
+        <span class="module-tag">Module Microsoft Learn : Manage database objects with Unity Catalog</span>
+    </div>
+
+</div>
+
+<script>
+/* Internationalisation : deux langues (fr / pt). La langue du navigateur
+   choisit la page ; le choix manuel est memorise dans localStorage. */
+(function () {
+    var PAGE = "fr";                                  // langue de cette page
+    var URLS = { fr: "index.html", pt: "pt.html" };   // les deux versions
+    var KEY = "dp750-lang";
+
+    function store(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
+    function read() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+
+    /* 1) ?lang=fr ou ?lang=pt force la langue et la memorise */
+    var param = null;
+    try { param = new URLSearchParams(location.search).get("lang"); } catch (e) {}
+    if (param === "fr" || param === "pt") { store(param); }
+
+    /* 2) sans choix memorise, on suit navigator.languages */
+    if (!read()) {
+        var list = (navigator.languages && navigator.languages.length)
+            ? navigator.languages : [navigator.language || ""];
+        var detected = null;
+        for (var i = 0; i < list.length; i++) {
+            var l = String(list[i]).toLowerCase();
+            if (l.indexOf("pt") === 0) { detected = "pt"; break; }
+            if (l.indexOf("fr") === 0) { detected = "fr"; break; }
+        }
+        if (detected && detected !== PAGE) { location.replace(URLS[detected]); return; }
+    }
+
+    /* 3) commutateur manuel */
+    var btns = document.querySelectorAll(".lang-btn");
+    Array.prototype.forEach.call(btns, function (b) {
+        if (b.getAttribute("data-lang") === PAGE) {
+            b.setAttribute("aria-current", "true");
+        }
+        b.addEventListener("click", function () {
+            var target = b.getAttribute("data-lang");
+            store(target);
+            if (target !== PAGE) { location.href = URLS[target]; }
+        });
+    });
+})();
+</script>
+
+</body>
+</html>
