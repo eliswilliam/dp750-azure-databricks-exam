@@ -5,7 +5,8 @@ A self-contained, printable study bank of **75 practice questions** for the Micr
 
 Each question ships with the four answer options, the highlighted correct answer, a
 justification, and a breakdown of why every other option is wrong — all cross-referenced
-to the corresponding Microsoft Learn module.
+to the corresponding Microsoft Learn module. The bank is **interactive**: pick an option
+and the correction appears immediately.
 
 The document is available in **two languages**, French and Brazilian Portuguese, on a single
 static site.
@@ -19,6 +20,9 @@ static site.
 
 ## Features
 
+- **Answer and get corrected on the spot** — click a proposal and the page immediately marks
+  your choice, highlights the correct option and unfolds the justification. A sticky bar
+  tracks score, questions answered and success rate.
 - **75 questions across 33 Microsoft Learn modules** — Azure Databricks architecture, Unity
   Catalog governance, compute selection, Lakehouse Federation, Delta Lake, Lakeflow Jobs,
   Structured Streaming and more.
@@ -26,8 +30,9 @@ static site.
   *Why the other options are incorrect* list.
 - **Answer keys are shuffled** — the correct answer is spread evenly over A/B/C/D
   (19/19/19/18) so position is never a hint.
-- **Print / Save as PDF** — a dedicated print stylesheet strips the navigation and keeps each
-  question card on one page, so the whole bank can be printed as a revision booklet.
+- **Print / Save as PDF** — a dedicated print stylesheet strips the navigation and the quiz
+  bar and keeps each question card on one page, so the whole bank can be printed as a
+  revision booklet with every answer and explanation visible.
 - **Bilingual, browser-detected** — the site follows `navigator.languages` and serves French
   or Portuguese automatically, with a manual switcher that remembers the choice.
 
@@ -44,6 +49,25 @@ The logic lives in a small inline script at the bottom of each page and needs no
 
 Both pages also declare `hreflang` alternates for search engines. If `localStorage` is
 unavailable, detection still works and the site falls back to French for unknown languages.
+
+## Answering the questions
+
+Answers are hidden on screen until you commit to one, so the bank can be used for real
+practice rather than reading:
+
+- **Click a proposal** (or focus it and press <kbd>Enter</kbd> / <kbd>Space</kbd>). Your choice
+  turns red if it is wrong, the correct option is highlighted, and the justification plus the
+  *why the other options are incorrect* list unfold.
+- **The first click is final** for that question — the bar above the questions records it, so
+  the score means something.
+- **"Show all answers"** reveals every correction at once without touching the score, for
+  when you just want to read through the bank.
+- **"Reset"** clears the whole session and hides the answers again.
+
+Nothing is stored or sent anywhere: progress lives in the page and resets on reload.
+
+Without JavaScript the page degrades cleanly into the static answer key it was before — all
+answers and explanations simply stay visible.
 
 ## Repository structure
 

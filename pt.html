@@ -7,6 +7,7 @@
     <link rel="alternate" hreflang="fr" href="https://eliswilliam.github.io/dp750-azure-databricks-exam/">
     <link rel="alternate" hreflang="pt" href="https://eliswilliam.github.io/dp750-azure-databricks-exam/pt.html">
     <link rel="alternate" hreflang="x-default" href="https://eliswilliam.github.io/dp750-azure-databricks-exam/">
+    <script>document.documentElement.className += " js";</script>
     <style>
         :root {
             --primary-color: #0078d4;
@@ -183,6 +184,129 @@
             cursor: default;
         }
 
+        /* ---------- Interactive quiz (active only when JavaScript runs) ---------- */
+        .quiz-bar,
+        .hint {
+            display: none;
+        }
+
+        .quiz-bar {
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+            flex-wrap: wrap;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 12px 18px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+            font-size: 0.95em;
+        }
+
+        .quiz-stat strong {
+            color: var(--primary-color);
+        }
+
+        .hint {
+            color: #5f6368;
+            font-size: 0.9em;
+            margin-bottom: 16px;
+        }
+
+        .btn-reset {
+            background-color: #ffffff;
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+            padding: 8px 18px;
+            font-size: 0.9em;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .btn-reset:hover {
+            background-color: #e8f0fe;
+        }
+
+        .options-list li.chosen-wrong {
+            background-color: #fde7e9;
+            border-color: #a80000;
+            color: #a80000;
+            font-weight: bold;
+        }
+
+        .options-list li.chosen-wrong::after {
+            content: "  \2717";
+        }
+
+        .options-list li.correct-option::after {
+            content: "  \2713";
+        }
+
+        @media screen {
+            .js .quiz-bar {
+                display: flex;
+            }
+
+            .js .hint {
+                display: block;
+            }
+
+            .js .options-list li.selectable {
+                cursor: pointer;
+                transition: background-color 0.15s, border-color 0.15s;
+            }
+
+            .js .options-list li.selectable:hover {
+                background-color: #eef4fb;
+                border-color: var(--primary-color);
+            }
+
+            .js .options-list li.selectable:focus-visible {
+                outline: 2px solid var(--primary-color);
+                outline-offset: 2px;
+            }
+
+            /* the answer stays hidden on screen until the question is answered */
+            .js .card:not(.answered) .options-list li.correct-option {
+                background-color: var(--option-bg);
+                border-color: var(--border-color);
+                color: var(--text-color);
+                font-weight: normal;
+            }
+
+            .js .card:not(.answered) .options-list li.correct-option::after {
+                content: none;
+            }
+
+            .js .card:not(.answered) .answer-tag,
+            .js .card:not(.answered) .explanation {
+                display: none;
+            }
+
+            /* "show all answers" override */
+            body.reveal-all .card:not(.answered) .options-list li.correct-option {
+                background-color: var(--correct-bg);
+                border-color: var(--correct-border);
+                color: var(--correct-text);
+                font-weight: bold;
+            }
+
+            body.reveal-all .card:not(.answered) .options-list li.correct-option::after {
+                content: "  \2713";
+            }
+
+            body.reveal-all .card:not(.answered) .answer-tag {
+                display: inline;
+            }
+
+            body.reveal-all .card:not(.answered) .explanation {
+                display: block;
+            }
+        }
+
         @media print {
             body {
                 background-color: #ffffff;
@@ -217,12 +341,21 @@
     <div class="header">
         <h1>Exame Azure Databricks Data Engineer</h1>
         <div class="subtitle">Banco Completo de 75 Questões: Enunciados, Alternativas, Respostas e Explicações Detalhadas</div>
+        <div class="hint">Clique em uma alternativa para revelar a resposta correta e sua explicação.</div>
         <button class="btn-print" onclick="window.print()">Imprimir / Salvar em PDF</button>
 
         <div class="lang-switch" role="group" aria-label="Langue / Idioma">
             <button type="button" class="lang-btn" data-lang="fr">Français</button>
             <button type="button" class="lang-btn" data-lang="pt">Português</button>
         </div>
+    </div>
+
+    <div class="quiz-bar">
+        <span class="quiz-stat">Pontuação: <strong id="quiz-score">0</strong> / 75</span>
+        <span class="quiz-stat">Respondidas: <strong id="quiz-answered">0</strong> / 75</span>
+        <span class="quiz-stat">Acertos: <strong id="quiz-rate">&ndash;</strong></span>
+        <button type="button" id="quiz-reveal" class="btn-reset" data-show="Mostrar todas as respostas" data-hide="Ocultar as respostas">Mostrar todas as respostas</button>
+        <button type="button" id="quiz-reset" class="btn-reset">Reiniciar</button>
     </div>
 
     <!-- Question 1 -->
@@ -234,7 +367,7 @@
             <li>A. Databricks Runtime 14.3 LTS com o Photon desativado</li>
             <li>B. Databricks Runtime 14.3 LTS ML com o Photon ativado</li>
             <li>C. A versão principal mais recente do Databricks Runtime (Current DBR) com o Photon ativado</li>
-            <li class="correct-option">D. Databricks Runtime 14.3 LTS com o Photon ativado (Resposta correta)</li>
+            <li class="correct-option">D. Databricks Runtime 14.3 LTS com o Photon ativado <span class="answer-tag">(Resposta correta)</span></li>
         </ul>
         <div class="explanation">
             <div class="explanation-title">Justificativa:</div>
@@ -256,7 +389,7 @@
         <strong>Propostas de resposta:</strong>
         <ul class="options-list">
             <li>A. Criar três catálogos distintos chamados Catalog_Raw, Catalog_Cleansed e Catalog_Reporting</li>
-            <li class="correct-option">B. Criar schemas chamados raw_data, cleansed_data e reporting_views no Catalog1 (Resposta correta)</li>
+            <li class="correct-option">B. Criar schemas chamados raw_data, cleansed_data e reporting_views no Catalog1 <span class="answer-tag">(Resposta correta)</span></li>
             <li>C. Criar schemas nomeados de acordo com os departamentos de negócio (ex.: marketing_data, finance_data) no Catalog1</li>
             <li>D. Usar um único schema e adicionar prefixos de nomes aos objetos (ex.: raw_table1, reporting_view1)</li>
         </ul>
@@ -280,7 +413,7 @@
         <strong>Propostas de resposta:</strong>
         <ul class="options-list">
             <li>A. An external location (Um local externo)</li>
-            <li class="correct-option">B. A connection (Uma conexão) (Resposta correta)</li>
+            <li class="correct-option">B. A connection (Uma conexão) <span class="answer-tag">(Resposta correta)</span></li>
             <li>C. A storage credential (Uma credencial de armazenamento)</li>
             <li>D. A schema (Um schema)</li>
         </ul>
@@ -303,7 +436,7 @@
         <div class="statement">Você tem tabelas Delta gerenciadas do Unity Catalog chamadas Catalog1.Schema1.Table1 e Catalog1.Schema1.Table2 com o rastreamento de linhas ativado. Uma consulta de dashboard junta essas tabelas por order_id e agrupa por order_date, mas ela excede a duração permitida. Você deve criar um objeto do Unity Catalog para armazenar os resultados pré-calculados, usar os dados modificados para os refreshes e evitar qualquer recálculo completo durante os refreshes normais. Qual configuração criar?</div>
         <strong>Propostas de resposta:</strong>
         <ul class="options-list">
-            <li class="correct-option">A. Uma view materializada usando REFRESH POLICY INCREMENTAL STRICT (Resposta correta)</li>
+            <li class="correct-option">A. Uma view materializada usando REFRESH POLICY INCREMENTAL STRICT <span class="answer-tag">(Resposta correta)</span></li>
             <li>B. Uma view materializada usando REFRESH POLICY INCREMENTAL</li>
             <li>C. Uma tabela de streaming (Streaming table)</li>
             <li>D. Uma view padrão (Standard view)</li>
@@ -330,7 +463,7 @@
             <li>A. Usar instâncias sob demanda (on-demand), ativar o dimensionamento automático (autoscaling) e configurar o encerramento automático (auto-termination)</li>
             <li>B. Atribuir a computação a um pool de instâncias, ativar o autoscaling e desativar o encerramento automático</li>
             <li>C. Atribuir a computação a um pool de instâncias, fixar o número de workers e configurar o encerramento automático</li>
-            <li class="correct-option">D. Atribuir a computação a um pool de instâncias, ativar o autoscaling e configurar o encerramento automático (Resposta correta)</li>
+            <li class="correct-option">D. Atribuir a computação a um pool de instâncias, ativar o autoscaling e configurar o encerramento automático <span class="answer-tag">(Resposta correta)</span></li>
         </ul>
         <div class="explanation">
             <div class="explanation-title">Justificativa:</div>
@@ -353,7 +486,7 @@
         <ul class="options-list">
             <li>A. Menu 1: DESCRIBE DETAIL | Menu 2: SET MANAGED</li>
             <li>B. Menu 1: CREATE TABLE | Menu 2: AS SELECT * FROM</li>
-            <li class="correct-option">C. Menu 1: ALTER TABLE | Menu 2: SET MANAGED TRUNCATE UNIFORM HISTORY (Resposta correta)</li>
+            <li class="correct-option">C. Menu 1: ALTER TABLE | Menu 2: SET MANAGED TRUNCATE UNIFORM HISTORY <span class="answer-tag">(Resposta correta)</span></li>
             <li>D. Menu 1: SHOW TABLES IN | Menu 2: SET MANAGED</li>
         </ul>
         <div class="explanation">
@@ -375,7 +508,7 @@
         <strong>Propostas de resposta:</strong>
         <ul class="options-list">
             <li>A. IngestOrders: Classic all-purpose compute | TrainLegacy: Classic jobs compute</li>
-            <li class="correct-option">B. IngestOrders: Serverless job compute | TrainLegacy: Classic jobs compute (Resposta correta)</li>
+            <li class="correct-option">B. IngestOrders: Serverless job compute | TrainLegacy: Classic jobs compute <span class="answer-tag">(Resposta correta)</span></li>
             <li>C. IngestOrders: Serverless SQL warehouse | TrainLegacy: Serverless job compute</li>
             <li>D. IngestOrders: Serverless job compute | TrainLegacy: Serverless SQL warehouse</li>
         </ul>
@@ -397,7 +530,7 @@
         <div class="statement">Você deve conceder os privilégios mais restritivos a um grupo de analistas chamado `analytics_team` para que ele possa executar consultas em um SQL Warehouse chamado `Reporting_Warehouse` sem poder modificar sua configuração nem excluí-lo. Qual comando privilegiar?</div>
         <strong>Propostas de resposta:</strong>
         <ul class="options-list">
-            <li class="correct-option">A. GRANT USE WAREHOUSE ON WAREHOUSE Reporting_Warehouse TO analytics_team (Resposta correta)</li>
+            <li class="correct-option">A. GRANT USE WAREHOUSE ON WAREHOUSE Reporting_Warehouse TO analytics_team <span class="answer-tag">(Resposta correta)</span></li>
             <li>B. GRANT MANAGE ON WAREHOUSE Reporting_Warehouse TO analytics_team</li>
             <li>C. GRANT SELECT ON WAREHOUSE Reporting_Warehouse TO analytics_team</li>
             <li>D. GRANT MODIFY ON WAREHOUSE Reporting_Warehouse TO analytics_team</li>
@@ -423,7 +556,7 @@
             <li>A. `spark.read.format("json").load(...)` executado em um job agendado a cada 5 minutos</li>
             <li>B. O comando `COPY INTO` executado em loop em um notebook</li>
             <li>C. Uma consulta federada do Lakehouse Federation diretamente no armazenamento</li>
-            <li class="correct-option">D. Auto Loader (`spark.readStream.format("cloudFiles")`) (Resposta correta)</li>
+            <li class="correct-option">D. Auto Loader (`spark.readStream.format("cloudFiles")`) <span class="answer-tag">(Resposta correta)</span></li>
         </ul>
         <div class="explanation">
             <div class="explanation-title">Justificativa:</div>
@@ -445,7 +578,7 @@
         <strong>Propostas de resposta:</strong>
         <ul class="options-list">
             <li>A. Reparticionar a tabela com `df.repartition(100)` antes de cada gravação</li>
-            <li class="correct-option">B. Aplicar o comando `OPTIMIZE` com a indexação multidimensional `ZORDER BY (customer_id)` ou ativar o Liquid Clustering (Resposta correta)</li>
+            <li class="correct-option">B. Aplicar o comando `OPTIMIZE` com a indexação multidimensional `ZORDER BY (customer_id)` ou ativar o Liquid Clustering <span class="answer-tag">(Resposta correta)</span></li>
             <li>C. Converter a tabela para o formato Parquet padrão</li>
             <li>D. Criar um índice secundário SQL clássico na coluna `customer_id`</li>
         </ul>
@@ -471,7 +604,7 @@
             <li>A. `SELECT * FROM sales AT DATE '2026-01-15 10:00:00'`</li>
             <li>B. `SELECT * FROM sales RESTORE TO '2026-01-15 10:00:00'`</li>
             <li>C. `SELECT * FROM sales WITH HISTORY (timestamp = '2026-01-15 10:00:00')`</li>
-            <li class="correct-option">D. `SELECT * FROM sales TIMESTAMP AS OF '2026-01-15 10:00:00'` (Resposta correta)</li>
+            <li class="correct-option">D. `SELECT * FROM sales TIMESTAMP AS OF '2026-01-15 10:00:00'` <span class="answer-tag">(Resposta correta)</span></li>
         </ul>
         <div class="explanation">
             <div class="explanation-title">Justificativa:</div>
@@ -492,7 +625,7 @@
         <ul class="options-list">
             <li>A. `DELETE FROM orders WHERE commit_time < CURRENT_DATE() - 7`</li>
             <li>B. `PURGE TABLE orders RETAIN 7 DAYS`</li>
-            <li class="correct-option">C. `VACUUM orders RETAIN 168 HOURS` (Resposta correta)</li>
+            <li class="correct-option">C. `VACUUM orders RETAIN 168 HOURS` <span class="answer-tag">(Resposta correta)</span></li>
             <li>D. `OPTIMIZE orders CLEANUP OLD FILES`</li>
         </ul>
         <div class="explanation">
@@ -513,7 +646,7 @@
         <div class="statement">Na hierarquia de nomenclatura e de governança de objetos introduzida pelo Unity Catalog, qual é a estrutura completa obrigatória para fazer referência a uma tabela?</div>
         <strong>Propostas de resposta:</strong>
         <ul class="options-list">
-            <li class="correct-option">A. `catalog.schema.table` (Resposta correta)</li>
+            <li class="correct-option">A. `catalog.schema.table` <span class="answer-tag">(Resposta correta)</span></li>
             <li>B. `workspace.database.table`</li>
             <li>C. `storage_account.container.table`</li>
             <li>D. `group.schema.table`</li>
@@ -535,7 +668,7 @@
         <div class="statement">Você deve configurar o acesso a um contêiner ADLS Gen2 chamado `raw-data` localizado em uma conta de armazenamento do Azure. No Unity Catalog, qual objeto vincula uma *Storage Credential* (credencial de acesso gerenciada) a um caminho de URI de armazenamento externo (`abfss://...`)?</div>
         <strong>Propostas de resposta:</strong>
         <ul class="options-list">
-            <li class="correct-option">A. An External Location (Um local externo) (Resposta correta)</li>
+            <li class="correct-option">A. An External Location (Um local externo) <span class="answer-tag">(Resposta correta)</span></li>
             <li>B. A Foreign Catalog</li>
             <li>C. A Delta Share</li>
             <li>D. A Managed Volume</li>
@@ -560,7 +693,7 @@
         <strong>Propostas de resposta:</strong>
         <ul class="options-list">
             <li>A. `CHECK (timestamp IS NOT NULL)`</li>
-            <li class="correct-option">B. `@dlt.expect("valid_timestamp", "timestamp IS NOT NULL")` (Resposta correta)</li>
+            <li class="correct-option">B. `@dlt.expect("valid_timestamp", "timestamp IS NOT NULL")` <span class="answer-tag">(Resposta correta)</span></li>
             <li>C. `ASSERT timestamp IS NOT NULL`</li>
             <li>D. `WHERE timestamp IS NOT NULL`</li>
         </ul>
@@ -584,7 +717,7 @@
         <ul class="options-list">
             <li>A. `ON VIOLATION FAIL UPDATE`</li>
             <li>B. `ON VIOLATION IGNORE`</li>
-            <li class="correct-option">C. `ON VIOLATION DROP ROW` (Resposta correta)</li>
+            <li class="correct-option">C. `ON VIOLATION DROP ROW` <span class="answer-tag">(Resposta correta)</span></li>
             <li>D. `ON VIOLATION LOG ONLY`</li>
         </ul>
         <div class="explanation">
@@ -606,7 +739,7 @@
         <strong>Propostas de resposta:</strong>
         <ul class="options-list">
             <li>A. `ON VIOLATION DROP ROW`</li>
-            <li class="correct-option">B. `ON VIOLATION FAIL UPDATE` (Resposta correta)</li>
+            <li class="correct-option">B. `ON VIOLATION FAIL UPDATE` <span class="answer-tag">(Resposta correta)</span></li>
             <li>C. `ON VIOLATION STOP PIPELINE`</li>
             <li>D. `ON VIOLATION RAISE ERROR`</li>
         </ul>
@@ -630,7 +763,7 @@
         <ul class="options-list">
             <li>A. `.option("resumeFrom", "latest")`</li>
             <li>B. `.option("enableStateStore", "true")`</li>
-            <li class="correct-option">C. `.option("checkpointLocation", "abfss://...")` (Resposta correta)</li>
+            <li class="correct-option">C. `.option("checkpointLocation", "abfss://...")` <span class="answer-tag">(Resposta correta)</span></li>
             <li>D. `.option("autoRecovery", "enabled")`</li>
         </ul>
         <div class="explanation">
@@ -650,7 +783,7 @@
         <div class="statement">Você deseja capturar e propagar as alterações de linhas (inserções, atualizações, exclusões) em uma tabela Delta `customers` para consumi-las como um fluxo incremental. Qual propriedade da tabela você deve ativar?</div>
         <strong>Propostas de resposta:</strong>
         <ul class="options-list">
-            <li class="correct-option">A. `ALTER TABLE customers SET TBLPROPERTIES (delta.enableChangeDataFeed = true)` (Resposta correta)</li>
+            <li class="correct-option">A. `ALTER TABLE customers SET TBLPROPERTIES (delta.enableChangeDataFeed = true)` <span class="answer-tag">(Resposta correta)</span></li>
             <li>B. `ALTER TABLE customers SET TBLPROPERTIES (delta.enableCDC = true)`</li>
             <li>C. `ALTER TABLE customers ENABLE ROW LOGGING`</li>
             <li>D. `ALTER TABLE customers TRACK CHANGES`</li>
@@ -675,7 +808,7 @@
             <li>A. `UPDATE OR INSERT INTO dim_product ...`</li>
             <li>B. `UPSERT INTO dim_product SELECT * FROM new_products`</li>
             <li>C. `COPY INTO dim_product FROM new_products`</li>
-            <li class="correct-option">D. `MERGE INTO dim_product target USING new_products source ON target.product_id = source.product_id WHEN MATCHED THEN UPDATE SET * WHEN NOT MATCHED THEN INSERT *` (Resposta correta)</li>
+            <li class="correct-option">D. `MERGE INTO dim_product target USING new_products source ON target.product_id = source.product_id WHEN MATCHED THEN UPDATE SET * WHEN NOT MATCHED THEN INSERT *` <span class="answer-tag">(Resposta correta)</span></li>
         </ul>
         <div class="explanation">
             <div class="explanation-title">Justificativa:</div>
@@ -696,7 +829,7 @@
         <strong>Propostas de resposta:</strong>
         <ul class="options-list">
             <li>A. `transaction_id BIGINT AUTO_INCREMENT`</li>
-            <li class="correct-option">B. `transaction_id BIGINT GENERATED ALWAYS AS IDENTITY` (Resposta correta)</li>
+            <li class="correct-option">B. `transaction_id BIGINT GENERATED ALWAYS AS IDENTITY` <span class="answer-tag">(Resposta correta)</span></li>
             <li>C. `transaction_id BIGINT DEFAULT NEXTVAL()`</li>
             <li>D. `transaction_id BIGINT SERIAL`</li>
         </ul>
@@ -720,7 +853,7 @@
             <li>A. `mssparkutils.credentials.getSecret(...)`</li>
             <li>B. `spark.conf.get("secret.my_key")`</li>
             <li>C. `os.getenv("MY_SECRET")`</li>
-            <li class="correct-option">D. `dbutils.secrets.get(scope = "my_scope", key = "my_key")` (Resposta correta)</li>
+            <li class="correct-option">D. `dbutils.secrets.get(scope = "my_scope", key = "my_key")` <span class="answer-tag">(Resposta correta)</span></li>
         </ul>
         <div class="explanation">
             <div class="explanation-title">Justificativa:</div>
@@ -740,7 +873,7 @@
         <div class="statement">Você deve configurar um cluster compartilhado entre vários Data Analysts. O cluster deve aplicar o controle de acesso refinado do Unity Catalog (segurança em nível de linhas/colunas) e impedir que um usuário acesse o sistema de arquivos subjacente do nó driver. Qual modo de acesso de computação escolher?</div>
         <strong>Propostas de resposta:</strong>
         <ul class="options-list">
-            <li class="correct-option">A. Shared Access Mode (Resposta correta)</li>
+            <li class="correct-option">A. Shared Access Mode <span class="answer-tag">(Resposta correta)</span></li>
             <li>B. Single User Access Mode</li>
             <li>C. No Isolation Shared Access Mode</li>
             <li>D. Custom Access Mode</li>
@@ -765,7 +898,7 @@
         <ul class="options-list">
             <li>A. `user_in_role('finance_hr')`</li>
             <li>B. `check_group('finance_hr')`</li>
-            <li class="correct-option">C. `is_account_group_member('finance_hr')` (Resposta correta)</li>
+            <li class="correct-option">C. `is_account_group_member('finance_hr')` <span class="answer-tag">(Resposta correta)</span></li>
             <li>D. `current_user_has_grant('finance_hr')`</li>
         </ul>
         <div class="explanation">
@@ -785,7 +918,7 @@
         <div class="statement">Você quer restringir a leitura das linhas da tabela `patients` de modo que os médicos vejam apenas os pacientes de sua respectiva região. Qual recurso nativo do Unity Catalog você deve anexar à tabela?</div>
         <strong>Propostas de resposta:</strong>
         <ul class="options-list">
-            <li class="correct-option">A. Uma função de Row Filter (`ALTER TABLE patients SET ROW FILTER region_filter ON (region)`) (Resposta correta)</li>
+            <li class="correct-option">A. Uma função de Row Filter (`ALTER TABLE patients SET ROW FILTER region_filter ON (region)`) <span class="answer-tag">(Resposta correta)</span></li>
             <li>B. Um Dynamic Schema Filter</li>
             <li>C. Um gatilho de auditoria</li>
             <li>D. Uma exibição materializada particionada</li>
@@ -808,7 +941,7 @@
         <div class="statement">Você deve anonimizar uma coluna `ssn` (seguridade social) diretamente na tabela base do Unity Catalog, substituindo o valor por `'XXX-XX-'` para os não administradores. Qual recurso usar?</div>
         <strong>Propostas de resposta:</strong>
         <ul class="options-list">
-            <li class="correct-option">A. Um Column Mask (`ALTER TABLE customers ALTER COLUMN ssn SET MASK ssn_mask_fn`) (Resposta correta)</li>
+            <li class="correct-option">A. Um Column Mask (`ALTER TABLE customers ALTER COLUMN ssn SET MASK ssn_mask_fn`) <span class="answer-tag">(Resposta correta)</span></li>
             <li>B. Uma chave de codificação SHA2</li>
             <li>C. Um trigger de anonimização na gravação</li>
             <li>D. Uma restrição CHECK de máscara</li>
@@ -833,7 +966,7 @@
         <ul class="options-list">
             <li>A. Databricks Connect</li>
             <li>B. Databricks Sync Engine</li>
-            <li class="correct-option">C. Databricks Repos (Workspace Git Integration) (Resposta correta)</li>
+            <li class="correct-option">C. Databricks Repos (Workspace Git Integration) <span class="answer-tag">(Resposta correta)</span></li>
             <li>D. Delta Sharing</li>
         </ul>
         <div class="explanation">
@@ -855,7 +988,7 @@
         <strong>Propostas de resposta:</strong>
         <ul class="options-list">
             <li>A. Scheduled (CRON) Trigger</li>
-            <li class="correct-option">B. File arrival trigger (Resposta correta)</li>
+            <li class="correct-option">B. File arrival trigger <span class="answer-tag">(Resposta correta)</span></li>
             <li>C. Continuous Execution Trigger</li>
             <li>D. Webhook Event Trigger</li>
         </ul>
@@ -879,7 +1012,7 @@
         <ul class="options-list">
             <li>A. Aumentar o número de workers do cluster</li>
             <li>B. Mudar o cluster para o modo Single User</li>
-            <li class="correct-option">C. Aumentar o número de tentativas de reexecução de tarefa (`Retries`) na configuração da tarefa (Resposta correta)</li>
+            <li class="correct-option">C. Aumentar o número de tentativas de reexecução de tarefa (`Retries`) na configuração da tarefa <span class="answer-tag">(Resposta correta)</span></li>
             <li>D. Ativar o rastreamento do Change Data Feed</li>
         </ul>
         <div class="explanation">
@@ -899,7 +1032,7 @@
         <div class="statement">Onde você pode configurar o destino de entrega permanente dos logs de executores e do driver Spark (*Cluster Log Delivery*) para analisar erros *Out Of Memory* mesmo após a exclusão de um cluster?</div>
         <strong>Propostas de resposta:</strong>
         <ul class="options-list">
-            <li class="correct-option">A. Nas configurações avançadas do cluster (Advanced Options -> Logging) para um local ADLS Gen2 ou Volume (Resposta correta)</li>
+            <li class="correct-option">A. Nas configurações avançadas do cluster (Advanced Options -> Logging) para um local ADLS Gen2 ou Volume <span class="answer-tag">(Resposta correta)</span></li>
             <li>B. Nas opções do notebook</li>
             <li>C. Apenas na tabela system.access</li>
             <li>D. No arquivo de configuração do workspace do Azure Key Vault</li>
@@ -923,7 +1056,7 @@
         <ul class="options-list">
             <li>A. `CREATE TABLE dev_table DEEP CLONE prod_table`</li>
             <li>B. `CREATE TABLE dev_table AS SELECT * FROM prod_table`</li>
-            <li class="correct-option">C. `CREATE TABLE dev_table SHALLOW CLONE prod_table` (Resposta correta)</li>
+            <li class="correct-option">C. `CREATE TABLE dev_table SHALLOW CLONE prod_table` <span class="answer-tag">(Resposta correta)</span></li>
             <li>D. `COPY TABLE prod_table TO dev_table`</li>
         </ul>
         <div class="explanation">
@@ -944,7 +1077,7 @@
         <strong>Propostas de resposta:</strong>
         <ul class="options-list">
             <li>A. `CREATE TABLE backup_table SHALLOW CLONE prod_table`</li>
-            <li class="correct-option">B. `CREATE TABLE backup_table DEEP CLONE prod_table` (Resposta correta)</li>
+            <li class="correct-option">B. `CREATE TABLE backup_table DEEP CLONE prod_table` <span class="answer-tag">(Resposta correta)</span></li>
             <li>C. `EXPORT TABLE prod_table TO backup_table`</li>
             <li>D. `SYNC TABLE prod_table TO backup_table`</li>
         </ul>
@@ -966,7 +1099,7 @@
         <div class="statement">Como um responsável pela Segurança pode identificar visualmente todas as views, tabelas e colunas de uma conta Azure Databricks alimentadas por uma coluna de origem específica que contém um código PII?</div>
         <strong>Propostas de resposta:</strong>
         <ul class="options-list">
-            <li class="correct-option">A. Ao consultar o grafo de linhagem de dados (Unity Catalog Data Lineage) no nível de coluna (Resposta correta)</li>
+            <li class="correct-option">A. Ao consultar o grafo de linhagem de dados (Unity Catalog Data Lineage) no nível de coluna <span class="answer-tag">(Resposta correta)</span></li>
             <li>B. Ao analisar o Spark UI DAG</li>
             <li>C. Ao inspecionar os logs do driver Spark</li>
             <li>D. Ao ler a tabela `system.billing.usage`</li>
@@ -991,7 +1124,7 @@
         <ul class="options-list">
             <li>A. `system.security`</li>
             <li>B. `default.dbu_logs`</li>
-            <li class="correct-option">C. `system.billing` (Resposta correta)</li>
+            <li class="correct-option">C. `system.billing` <span class="answer-tag">(Resposta correta)</span></li>
             <li>D. `catalog1.system_logs`</li>
         </ul>
         <div class="explanation">
@@ -1014,7 +1147,7 @@
             <li>A. Clusters All-Purpose com instâncias sob demanda</li>
             <li>B. SQL Warehouses Classic de tamanho XL</li>
             <li>C. Computação Single User com desligamento automático desativado</li>
-            <li class="correct-option">D. Clusters de Jobs (Jobs compute) ou Serverless com instâncias Spot do Azure (Resposta correta)</li>
+            <li class="correct-option">D. Clusters de Jobs (Jobs compute) ou Serverless com instâncias Spot do Azure <span class="answer-tag">(Resposta correta)</span></li>
         </ul>
         <div class="explanation">
             <div class="explanation-title">Justificativa:</div>
@@ -1035,7 +1168,7 @@
         <ul class="options-list">
             <li>A. Auto-Indexing</li>
             <li>B. Dynamic Bucketing</li>
-            <li class="correct-option">C. Liquid Clustering (`CLUSTER BY`) (Resposta correta)</li>
+            <li class="correct-option">C. Liquid Clustering (`CLUSTER BY`) <span class="answer-tag">(Resposta correta)</span></li>
             <li>D. Delta Caching</li>
         </ul>
         <div class="explanation">
@@ -1059,7 +1192,7 @@
             <li>A. Excluir e recriar a tabela com a nova chave</li>
             <li>B. Executar `REPARTITION TABLE table_name BY (customer_segment)`</li>
             <li>C. Executar um `VACUUM FULL`</li>
-            <li class="correct-option">D. Executar `ALTER TABLE table_name CLUSTER BY (customer_segment)` e depois um `OPTIMIZE` (Resposta correta)</li>
+            <li class="correct-option">D. Executar `ALTER TABLE table_name CLUSTER BY (customer_segment)` e depois um `OPTIMIZE` <span class="answer-tag">(Resposta correta)</span></li>
         </ul>
         <div class="explanation">
             <div class="explanation-title">Justificativa:</div>
@@ -1080,7 +1213,7 @@
         <ul class="options-list">
             <li>A. Spark Memory Leak</li>
             <li>B. Small File Problem</li>
-            <li class="correct-option">C. Data Skew (Desequilíbrio/Assimetria dos dados) (Resposta correta)</li>
+            <li class="correct-option">C. Data Skew (Desequilíbrio/Assimetria dos dados) <span class="answer-tag">(Resposta correta)</span></li>
             <li>D. Deadlock de rede</li>
         </ul>
         <div class="explanation">
@@ -1101,7 +1234,7 @@
         <strong>Propostas de resposta:</strong>
         <ul class="options-list">
             <li>A. Sort-Merge Join com reparticionamento</li>
-            <li class="correct-option">B. Broadcast Join via `df_fact.join(broadcast(df_dim), "key")` (Resposta correta)</li>
+            <li class="correct-option">B. Broadcast Join via `df_fact.join(broadcast(df_dim), "key")` <span class="answer-tag">(Resposta correta)</span></li>
             <li>C. Cross Join</li>
             <li>D. Outer Join com Z-Ordering</li>
         </ul>
@@ -1123,7 +1256,7 @@
         <strong>Propostas de resposta:</strong>
         <ul class="options-list">
             <li>A. Catalyst Optimizer Estático</li>
-            <li class="correct-option">B. Adaptive Query Execution (AQE) (Resposta correta)</li>
+            <li class="correct-option">B. Adaptive Query Execution (AQE) <span class="answer-tag">(Resposta correta)</span></li>
             <li>C. Auto-Scaling Engine</li>
             <li>D. Dynamic Partition Pruning (DPP) estático</li>
         </ul>
@@ -1144,7 +1277,7 @@
         <div class="statement">Você configurou o Lakehouse Federation para consultar tabelas hospedadas em um banco de dados externo (Snowflake, PostgreSQL, SQL Server). Como você deve controlar o acesso dos seus usuários a essas tabelas descobertas?</div>
         <strong>Propostas de resposta:</strong>
         <ul class="options-list">
-            <li class="correct-option">A. Aplicar os privilégios GRANT diretamente no catálogo externo (foreign catalog) no Unity Catalog (Resposta correta)</li>
+            <li class="correct-option">A. Aplicar os privilégios GRANT diretamente no catálogo externo (foreign catalog) no Unity Catalog <span class="answer-tag">(Resposta correta)</span></li>
             <li>B. Criar uma conexão (Connection) distinta por grupo de usuários</li>
             <li>C. Exportar as tabelas remotas para o ADLS Gen2 e conceder acesso apenas às cópias</li>
             <li>D. Criar uma credencial de armazenamento (storage credential) por grupo de usuários</li>
@@ -1168,7 +1301,7 @@
         <div class="statement">Um script corrompeu acidentalmente uma tabela Delta de produção ao sobrescrever seu conteúdo. Você deve desfazer essa modificação e retornar a uma versão anterior da tabela. Qual comando SQL você deve executar?</div>
         <strong>Propostas de resposta:</strong>
         <ul class="options-list">
-            <li class="correct-option">A. `RESTORE TABLE sales TO VERSION AS OF 5` (Resposta correta)</li>
+            <li class="correct-option">A. `RESTORE TABLE sales TO VERSION AS OF 5` <span class="answer-tag">(Resposta correta)</span></li>
             <li>B. `VACUUM sales RETAIN 168 HOURS`</li>
             <li>C. `ALTER TABLE sales SET TBLPROPERTIES ('version' = '5')`</li>
             <li>D. `CREATE TABLE sales AS SELECT * FROM sales VERSION AS OF 5`</li>
@@ -1195,7 +1328,7 @@
             <li>A. `ALTER TABLE ... ALTER COLUMN price SET NOT NULL`</li>
             <li>B. `ALTER TABLE ... ALTER COLUMN price SET DEFAULT 0`</li>
             <li>C. Modificar o tipo de dados de `price` para `DECIMAL(10,2)`</li>
-            <li class="correct-option">D. `ALTER TABLE ... ADD CONSTRAINT check_price CHECK (price &gt;= 0)` (Resposta correta)</li>
+            <li class="correct-option">D. `ALTER TABLE ... ADD CONSTRAINT check_price CHECK (price &gt;= 0)` <span class="answer-tag">(Resposta correta)</span></li>
         </ul>
         <div class="explanation">
             <div class="explanation-title">Justificativa:</div>
@@ -1219,7 +1352,7 @@
             <li>A. Databricks Repos</li>
             <li>B. Delta Live Tables</li>
             <li>C. Unity Catalog</li>
-            <li class="correct-option">D. Databricks Asset Bundles (DABs) (Resposta correta)</li>
+            <li class="correct-option">D. Databricks Asset Bundles (DABs) <span class="answer-tag">(Resposta correta)</span></li>
         </ul>
         <div class="explanation">
             <div class="explanation-title">Justificativa:</div>
@@ -1241,7 +1374,7 @@
         <strong>Propostas de resposta:</strong>
         <ul class="options-list">
             <li>A. `databricks workspace import -e production`</li>
-            <li class="correct-option">B. `databricks bundle deploy -e production` (Resposta correta)</li>
+            <li class="correct-option">B. `databricks bundle deploy -e production` <span class="answer-tag">(Resposta correta)</span></li>
             <li>C. `databricks jobs submit -e production`</li>
             <li>D. `databricks bundle validate -e production`</li>
         </ul>
@@ -1267,7 +1400,7 @@
             <li>A. `.option("lateData", "10 minutes")`</li>
             <li>B. `.trigger(processingTime="10 minutes")`</li>
             <li>C. `.groupBy(window("event_time", "10 minutes"))`</li>
-            <li class="correct-option">D. `.withWatermark("event_time", "10 minutes")` (Resposta correta)</li>
+            <li class="correct-option">D. `.withWatermark("event_time", "10 minutes")` <span class="answer-tag">(Resposta correta)</span></li>
         </ul>
         <div class="explanation">
             <div class="explanation-title">Justificativa:</div>
@@ -1291,7 +1424,7 @@
             <li>A. `partitionBy()`</li>
             <li>B. `groupByKey()`</li>
             <li>C. `withWatermark()`</li>
-            <li class="correct-option">D. `window(timeColumn, windowDuration, slideDuration)` (Resposta correta)</li>
+            <li class="correct-option">D. `window(timeColumn, windowDuration, slideDuration)` <span class="answer-tag">(Resposta correta)</span></li>
         </ul>
         <div class="explanation">
             <div class="explanation-title">Justificativa:</div>
@@ -1312,7 +1445,7 @@
         <div class="statement">Você executa um pipeline Lakeflow Spark Declarative Pipelines (Delta Live Tables) que alimenta tabelas de relatórios. O pipeline deve processar os novos dados disponíveis e depois parar e liberar a computação a fim de reduzir os custos. Qual modo de execução você deve configurar?</div>
         <strong>Propostas de resposta:</strong>
         <ul class="options-list">
-            <li class="correct-option">A. Um pipeline disparado (Triggered pipeline) (Resposta correta)</li>
+            <li class="correct-option">A. Um pipeline disparado (Triggered pipeline) <span class="answer-tag">(Resposta correta)</span></li>
             <li>B. Um pipeline contínuo (Continuous pipeline)</li>
             <li>C. Uma tabela de streaming (Streaming table)</li>
             <li>D. Uma exibição materializada (Materialized view)</li>
@@ -1337,7 +1470,7 @@
         <strong>Propostas de resposta:</strong>
         <ul class="options-list">
             <li>A. Uma tabela externa (External table)</li>
-            <li class="correct-option">B. Um volume do Unity Catalog (Volume) (Resposta correta)</li>
+            <li class="correct-option">B. Um volume do Unity Catalog (Volume) <span class="answer-tag">(Resposta correta)</span></li>
             <li>C. Um local externo (External location)</li>
             <li>D. Uma credencial de armazenamento (Storage credential)</li>
         </ul>
@@ -1361,7 +1494,7 @@
         <strong>Propostas de resposta:</strong>
         <ul class="options-list">
             <li>A. Um volume externo, cujos arquivos são preservados no armazenamento durante um `DROP VOLUME`</li>
-            <li class="correct-option">B. Um volume gerenciado, cujos arquivos são excluídos do armazenamento durante um `DROP VOLUME` (Resposta correta)</li>
+            <li class="correct-option">B. Um volume gerenciado, cujos arquivos são excluídos do armazenamento durante um `DROP VOLUME` <span class="answer-tag">(Resposta correta)</span></li>
             <li>C. Um volume gerenciado, cujos arquivos são preservados no armazenamento durante um `DROP VOLUME`</li>
             <li>D. Um volume externo, cujos arquivos são excluídos do armazenamento durante um `DROP VOLUME`</li>
         </ul>
@@ -1391,7 +1524,7 @@
         <ul class="options-list">
             <li>A. ACLs do Azure Active Directory e Azure Monitor</li>
             <li>B. Databricks Repos e Azure Data Factory</li>
-            <li class="correct-option">C. Unity Catalog e Microsoft Purview (Resposta correta)</li>
+            <li class="correct-option">C. Unity Catalog e Microsoft Purview <span class="answer-tag">(Resposta correta)</span></li>
             <li>D. Controles de Acesso do DBFS e Log Analytics</li>
         </ul>
         <div class="explanation">
@@ -1416,7 +1549,7 @@
             <li>A. Databricks SQL Warehouse Serverless</li>
             <li>B. Databricks Interactive Notebooks</li>
             <li>C. Databricks AutoML</li>
-            <li class="correct-option">D. Lakeflow Jobs (Workflows) (Resposta correta)</li>
+            <li class="correct-option">D. Lakeflow Jobs (Workflows) <span class="answer-tag">(Resposta correta)</span></li>
         </ul>
         <div class="explanation">
             <div class="explanation-title">Justificativa:</div>
@@ -1440,7 +1573,7 @@
             <li>A. Classic All-Purpose Cluster</li>
             <li>B. Automated Job Cluster</li>
             <li>C. Single-node Compute</li>
-            <li class="correct-option">D. Databricks SQL Warehouse (Serverless) (Resposta correta)</li>
+            <li class="correct-option">D. Databricks SQL Warehouse (Serverless) <span class="answer-tag">(Resposta correta)</span></li>
         </ul>
         <div class="explanation">
             <div class="explanation-title">Justificativa:</div>
@@ -1463,7 +1596,7 @@
         <ul class="options-list">
             <li>A. Criar um cluster All-Purpose com a versão Databricks Runtime Light.</li>
             <li>B. Montar uma conta de armazenamento Azure Blob com o DBFS (Databricks File System).</li>
-            <li class="correct-option">C. Associar o workspace a um Metastore do Unity Catalog criado no nível da conta (Account level). (Resposta correta)</li>
+            <li class="correct-option">C. Associar o workspace a um Metastore do Unity Catalog criado no nível da conta (Account level). <span class="answer-tag">(Resposta correta)</span></li>
             <li>D. Ativar o modo Single-User em todos os clusters do workspace.</li>
         </ul>
         <div class="explanation">
@@ -1485,7 +1618,7 @@
         <div class="statement">Ao explorar os recursos do Azure Databricks, qual é o método recomendado para ingerir grandes volumes de arquivos CSV ou JSON armazenados no Azure Data Lake Storage Gen2 com um mínimo de código personalizado e de forma idempotente?</div>
         <strong>Propostas de resposta:</strong>
         <ul class="options-list">
-            <li class="correct-option">A. Usar o comando SQL <code>COPY INTO</code>. (Resposta correta)</li>
+            <li class="correct-option">A. Usar o comando SQL <code>COPY INTO</code>. <span class="answer-tag">(Resposta correta)</span></li>
             <li>B. Executar um laço <code>spark.read</code> personalizado em Python.</li>
             <li>C. Exportar os arquivos via Azure Data Factory no formato Parquet e depois importá-los.</li>
             <li>D. Carregar manualmente os arquivos pela interface gráfica do workspace.</li>
@@ -1509,7 +1642,7 @@
         <div class="statement">A arquitetura do Azure Databricks baseia-se na separação entre o Plano de Controle (Control Plane) e o Plano de Computação (Compute Plane). Qual das afirmações a seguir descreve corretamente a localização e a responsabilidade desses dois planos em uma implantação clássica?</div>
         <strong>Propostas de resposta:</strong>
         <ul class="options-list">
-            <li class="correct-option">A. O plano de controle (hospedado pela Microsoft) gerencia a interface, os notebooks e o gerenciamento dos jobs, enquanto o plano de computação (executado na VNet do cliente ou em um plano gerenciado) executa os clusters Spark. (Resposta correta)</li>
+            <li class="correct-option">A. O plano de controle (hospedado pela Microsoft) gerencia a interface, os notebooks e o gerenciamento dos jobs, enquanto o plano de computação (executado na VNet do cliente ou em um plano gerenciado) executa os clusters Spark. <span class="answer-tag">(Resposta correta)</span></li>
             <li>B. O plano de controle é executado na sub-rede virtual (VNet) do cliente, enquanto o plano de computação é hospedado na sub-rede gerenciada pela Microsoft.</li>
             <li>C. Os dois planos são executados inteiramente na conta de armazenamento Azure Data Lake do cliente.</li>
             <li>D. O plano de computação gerencia apenas os metadados e as chaves de criptografia, enquanto o plano de controle executa os executores Spark.</li>
@@ -1535,7 +1668,7 @@
         <ul class="options-list">
             <li>A. O Classic Compute não usa máquinas virtuais do Azure, enquanto o Serverless usa.</li>
             <li>B. O Classic Compute é reservado exclusivamente ao Databricks SQL, enquanto o Serverless é reservado à ciência de dados.</li>
-            <li class="correct-option">C. O Serverless Compute executa os recursos de computação em um plano gerenciado pela Databricks com inicialização quase instantânea, sem que o cliente precise provisionar VMs em sua própria assinatura do Azure. (Resposta correta)</li>
+            <li class="correct-option">C. O Serverless Compute executa os recursos de computação em um plano gerenciado pela Databricks com inicialização quase instantânea, sem que o cliente precise provisionar VMs em sua própria assinatura do Azure. <span class="answer-tag">(Resposta correta)</span></li>
             <li>D. O Serverless Compute exige a ativação manual do mecanismo de auto-scaling em cada cluster.</li>
         </ul>
         <div class="explanation">
@@ -1559,7 +1692,7 @@
         <ul class="options-list">
             <li>A. O armazenamento gerenciado armazena os dados no disco local do nó Driver Spark.</li>
             <li>B. O armazenamento externo não oferece suporte ao formato Delta Lake.</li>
-            <li class="correct-option">C. O armazenamento gerenciado é configurado no nível do Metastore, do Catálogo ou do Esquema para hospedar automaticamente as tabelas gerenciadas, sem especificar um caminho <code>LOCATION</code>. (Resposta correta)</li>
+            <li class="correct-option">C. O armazenamento gerenciado é configurado no nível do Metastore, do Catálogo ou do Esquema para hospedar automaticamente as tabelas gerenciadas, sem especificar um caminho <code>LOCATION</code>. <span class="answer-tag">(Resposta correta)</span></li>
             <li>D. O armazenamento gerenciado exclui todos os dados da assinatura do Azure se o workspace for excluído.</li>
         </ul>
         <div class="explanation">
@@ -1582,7 +1715,7 @@
         <strong>Propostas de resposta:</strong>
         <ul class="options-list">
             <li>A. Somente nos discos locais dos workers Spark.</li>
-            <li class="correct-option">B. No armazenamento do plano de controle (armazenamento DBFS raiz e serviços gerenciados) e nos discos de armazenamento do plano de computação. (Resposta correta)</li>
+            <li class="correct-option">B. No armazenamento do plano de controle (armazenamento DBFS raiz e serviços gerenciados) e nos discos de armazenamento do plano de computação. <span class="answer-tag">(Resposta correta)</span></li>
             <li>C. Somente nas consultas SQL transmitidas ao banco de dados interno.</li>
             <li>D. As chaves CMK não são suportadas na versão Azure do Databricks.</li>
         </ul>
@@ -1608,7 +1741,7 @@
             <li>A. O Account Admin gerencia os notebooks e as bibliotecas no nível de um único workspace.</li>
             <li>B. O Workspace Admin pode criar metastores do Unity Catalog transversais sem autorização prévia.</li>
             <li>C. O Account Admin é um papel herdado automaticamente da função Azure Reader da assinatura.</li>
-            <li class="correct-option">D. O Account Admin gerencia a criação dos metastores do Unity Catalog, a criação dos workspaces e as identidades no nível da conta global. (Resposta correta)</li>
+            <li class="correct-option">D. O Account Admin gerencia a criação dos metastores do Unity Catalog, a criação dos workspaces e as identidades no nível da conta global. <span class="answer-tag">(Resposta correta)</span></li>
         </ul>
         <div class="explanation">
             <div class="explanation-title">Justificativa:</div>
@@ -1629,7 +1762,7 @@
         <div class="statement">Você deve integrar um Lakehouse do Azure Databricks ao Microsoft Fabric para que as equipes de análise no Fabric possam consultar as tabelas Delta do Databricks sem duplicar fisicamente os arquivos de dados. Qual recurso você deve usar?</div>
         <strong>Propostas de resposta:</strong>
         <ul class="options-list">
-            <li class="correct-option">A. Atalhos do OneLake (OneLake Shortcuts) apontando para o Azure Data Lake Storage Gen2 (Resposta correta)</li>
+            <li class="correct-option">A. Atalhos do OneLake (OneLake Shortcuts) apontando para o Azure Data Lake Storage Gen2 <span class="answer-tag">(Resposta correta)</span></li>
             <li>B. Azure Data Factory Copy Activity em modo binário</li>
             <li>C. Exportar as tabelas no formato CSV para um servidor FTP</li>
             <li>D. Conector JDBC/ODBC direto no cluster All-Purpose</li>
@@ -1653,7 +1786,7 @@
         <div class="statement">Um desenvolvedor que deseja usar o Visual Studio Code em sua máquina local para desenvolver, testar e depurar código PySpark executado diretamente em um cluster remoto do Azure Databricks deve usar:</div>
         <strong>Propostas de resposta:</strong>
         <ul class="options-list">
-            <li class="correct-option">A. A extensão Azure Databricks para VS Code utilizando o Databricks Connect (Resposta correta)</li>
+            <li class="correct-option">A. A extensão Azure Databricks para VS Code utilizando o Databricks Connect <span class="answer-tag">(Resposta correta)</span></li>
             <li>B. Somente a Databricks CLI v0.12</li>
             <li>C. Azure DevOps Pipeline com agentes auto-hospedados</li>
             <li>D. A integração Git nativa sem conexão ao cluster</li>
@@ -1679,7 +1812,7 @@
         <ul class="options-list">
             <li>A. Import Mode</li>
             <li>B. Web API REST</li>
-            <li class="correct-option">C. DirectQuery (ou Direct Lake dependendo da arquitetura) (Resposta correta)</li>
+            <li class="correct-option">C. DirectQuery (ou Direct Lake dependendo da arquitetura) <span class="answer-tag">(Resposta correta)</span></li>
             <li>D. Dynamic File Stream</li>
         </ul>
         <div class="explanation">
@@ -1703,7 +1836,7 @@
         <ul class="options-list">
             <li>A. O Microsoft Purview substitui completamente o catálogo Unity Catalog.</li>
             <li>B. É preciso escrever scripts Python personalizados executados todas as noites para extrair o esquema.</li>
-            <li class="correct-option">C. O conector Unity Catalog para Microsoft Purview sincroniza automaticamente os metadados, os esquemas e a linhagem (lineage) com o Purview. (Resposta correta)</li>
+            <li class="correct-option">C. O conector Unity Catalog para Microsoft Purview sincroniza automaticamente os metadados, os esquemas e a linhagem (lineage) com o Purview. <span class="answer-tag">(Resposta correta)</span></li>
             <li>D. A integração só é possível enviando arquivos Excel de dicionário de dados.</li>
         </ul>
         <div class="explanation">
@@ -1728,7 +1861,7 @@
             <li>A. Usar apenas scripts Bash iniciados via SSH no nó Driver do Spark.</li>
             <li>B. Usar somente Power Automate Webhooks.</li>
             <li>C. Usar Databricks Connect a partir de um navegador web.</li>
-            <li class="correct-option">D. Usar Azure Data Factory (ou Synapse Pipelines) com as atividades Azure Databricks Notebook / Job. (Resposta correta)</li>
+            <li class="correct-option">D. Usar Azure Data Factory (ou Synapse Pipelines) com as atividades Azure Databricks Notebook / Job. <span class="answer-tag">(Resposta correta)</span></li>
         </ul>
         <div class="explanation">
             <div class="explanation-title">Justificativa:</div>
@@ -1750,7 +1883,7 @@
         <strong>Propostas de resposta:</strong>
         <ul class="options-list">
             <li>A. Usar instâncias Spot para o nó Driver e para todos os nós Worker.</li>
-            <li class="correct-option">B. Usar uma instância On-Demand para o nó Driver e instâncias On-Demand (ou uma combinação controlada) para os nós Worker. (Resposta correta)</li>
+            <li class="correct-option">B. Usar uma instância On-Demand para o nó Driver e instâncias On-Demand (ou uma combinação controlada) para os nós Worker. <span class="answer-tag">(Resposta correta)</span></li>
             <li>C. Usar um cluster Single-Node com preempção habilitada.</li>
             <li>D. Não usar um cluster de job, mas apenas um cluster All-Purpose compartilhado.</li>
         </ul>
@@ -1774,7 +1907,7 @@
         <strong>Propostas de resposta:</strong>
         <ul class="options-list">
             <li>A. O Azure Databricks cobra as DBU completas mesmo se as instâncias do pool estiverem inativas.</li>
-            <li class="correct-option">B. O Azure Databricks NÃO cobra DBU pelas instâncias inativas de um pool, mas os custos das VMs do provedor de nuvem (Azure) continuam a se aplicar. (Resposta correta)</li>
+            <li class="correct-option">B. O Azure Databricks NÃO cobra DBU pelas instâncias inativas de um pool, mas os custos das VMs do provedor de nuvem (Azure) continuam a se aplicar. <span class="answer-tag">(Resposta correta)</span></li>
             <li>C. As instâncias inativas de um pool são totalmente gratuitas (nenhum custo do Azure nem DBU).</li>
             <li>D. Os pools de instâncias só podem ser usados com o compute Serverless.</li>
         </ul>
@@ -1797,7 +1930,7 @@
         <div class="statement">Você deve compartilhar um cluster interativo entre vários cientistas de dados. Para garantir que cada usuário não possa acessar os dados de outros usuários não autorizados e respeitar a governança do Unity Catalog, qual modo de acesso ao cluster (Access Mode) você deve selecionar?</div>
         <strong>Propostas de resposta:</strong>
         <ul class="options-list">
-            <li class="correct-option">A. Shared (Isolation Shared) (Resposta correta)</li>
+            <li class="correct-option">A. Shared (Isolation Shared) <span class="answer-tag">(Resposta correta)</span></li>
             <li>B. Single User</li>
             <li>C. No Isolation Allowed</li>
             <li>D. Legacy Passthrough</li>
@@ -1824,7 +1957,7 @@
             <li>A. Aumentar o número de nós Worker.</li>
             <li>B. Habilitar apenas o auto-scaling.</li>
             <li>C. Passar o cluster para o modo Single-Node.</li>
-            <li class="correct-option">D. Selecionar um tipo de instância com capacidade de memória (RAM) mais alta para o nó Driver. (Resposta correta)</li>
+            <li class="correct-option">D. Selecionar um tipo de instância com capacidade de memória (RAM) mais alta para o nó Driver. <span class="answer-tag">(Resposta correta)</span></li>
         </ul>
         <div class="explanation">
             <div class="explanation-title">Justificativa:</div>
@@ -1845,7 +1978,7 @@
         <div class="statement">Qual é o método recomendado para instalar bibliotecas Python específicas de uma tarefa sem impactar os outros usuários de um cluster compartilhado no Azure Databricks?</div>
         <strong>Propostas de resposta:</strong>
         <ul class="options-list">
-            <li class="correct-option">A. Usar bibliotecas incluídas no nível do notebook via <code>%pip install &lt;library_name&gt;</code>. (Resposta correta)</li>
+            <li class="correct-option">A. Usar bibliotecas incluídas no nível do notebook via <code>%pip install &lt;library_name&gt;</code>. <span class="answer-tag">(Resposta correta)</span></li>
             <li>B. Instalar a biblioteca no nível global do cluster pela interface Compute.</li>
             <li>C. Modificar a imagem base da máquina virtual do driver via SSH.</li>
             <li>D. Colocar o arquivo .whl diretamente na raiz do DBFS <code>/dbfs/databricks/</code>.</li>
@@ -1871,7 +2004,7 @@
         <ul class="options-list">
             <li>A. <code>workspace.schema.table</code></li>
             <li>B. <code>database.table.column</code></li>
-            <li class="correct-option">C. <code>catalog.schema.object</code> (ex.: <code>catalog.schema.table</code>) (Resposta correta)</li>
+            <li class="correct-option">C. <code>catalog.schema.object</code> (ex.: <code>catalog.schema.table</code>) <span class="answer-tag">(Resposta correta)</span></li>
             <li>D. <code>metastore.catalog.table</code></li>
         </ul>
         <div class="explanation">
@@ -1894,7 +2027,7 @@
         <strong>Propostas de resposta:</strong>
         <ul class="options-list">
             <li>A. Para uma tabela gerenciada, apenas os metadados são excluídos; para uma tabela externa, tudo é excluído.</li>
-            <li class="correct-option">B. Para uma tabela gerenciada, os metadados E os arquivos de dados físicos subjacentes são excluídos. Para uma tabela externa, apenas os metadados são excluídos. (Resposta correta)</li>
+            <li class="correct-option">B. Para uma tabela gerenciada, os metadados E os arquivos de dados físicos subjacentes são excluídos. Para uma tabela externa, apenas os metadados são excluídos. <span class="answer-tag">(Resposta correta)</span></li>
             <li>C. As tabelas externas não podem ser excluídas via SQL.</li>
             <li>D. Não há nenhuma diferença de comportamento durante o <code>DROP TABLE</code>.</li>
         </ul>
@@ -1918,7 +2051,7 @@
         <strong>Propostas de resposta:</strong>
         <ul class="options-list">
             <li>A. Um Volume Externo (External Volume)</li>
-            <li class="correct-option">B. Um Catálogo Externo (Foreign Catalog) via Lakehouse Federation (Resposta correta)</li>
+            <li class="correct-option">B. Um Catálogo Externo (Foreign Catalog) via Lakehouse Federation <span class="answer-tag">(Resposta correta)</span></li>
             <li>C. Um compartilhamento Delta Sharing</li>
             <li>D. Uma View Materializada (Materialized View)</li>
         </ul>
@@ -1943,7 +2076,7 @@
         <ul class="options-list">
             <li>A. External Table</li>
             <li>B. Streaming Table</li>
-            <li class="correct-option">C. Volume (Managed ou External Volume) (Resposta correta)</li>
+            <li class="correct-option">C. Volume (Managed ou External Volume) <span class="answer-tag">(Resposta correta)</span></li>
             <li>D. Delta Lake Index</li>
         </ul>
         <div class="explanation">
@@ -1968,7 +2101,7 @@
             <li>A. Para gerar automaticamente pipelines ETL em PySpark a partir de esquemas JSON.</li>
             <li>B. Para criptografar as colunas que contêm PII (dados pessoais) no Delta Lake.</li>
             <li>C. Para substituir o otimizador de consultas Catalyst no Apache Spark.</li>
-            <li class="correct-option">D. Para fornecer uma interface conversacional baseada em IA que permite aos usuários de negócio fazer perguntas em linguagem natural e obter respostas analíticas precisas sobre os dados do Lakehouse. (Resposta correta)</li>
+            <li class="correct-option">D. Para fornecer uma interface conversacional baseada em IA que permite aos usuários de negócio fazer perguntas em linguagem natural e obter respostas analíticas precisas sobre os dados do Lakehouse. <span class="answer-tag">(Resposta correta)</span></li>
         </ul>
         <div class="explanation">
             <div class="explanation-title">Justificativa:</div>
@@ -2026,6 +2159,93 @@
             if (target !== PAGE) { location.href = URLS[target]; }
         });
     });
+})();
+</script>
+
+<script>
+/* Interactive quiz: click an option and the correct answer is revealed.
+   Language-neutral - every label is read from the markup. */
+(function () {
+    var cards = document.querySelectorAll(".card");
+    var scoreEl = document.getElementById("quiz-score");
+    var answeredEl = document.getElementById("quiz-answered");
+    var rateEl = document.getElementById("quiz-rate");
+    var resetBtn = document.getElementById("quiz-reset");
+    var revealBtn = document.getElementById("quiz-reveal");
+
+    function refresh() {
+        var answered = document.querySelectorAll(".card.answered").length;
+        var score = document.querySelectorAll(".card.answered.correct-card").length;
+        scoreEl.textContent = score;
+        answeredEl.textContent = answered;
+        rateEl.textContent = answered ? Math.round((score / answered) * 100) + " %" : "\u2013";
+    }
+
+    function optionsOf(card) {
+        return card.querySelectorAll(".options-list > li");
+    }
+
+    function arm(card) {
+        Array.prototype.forEach.call(optionsOf(card), function (li) {
+            li.classList.add("selectable");
+            li.setAttribute("tabindex", "0");
+            li.setAttribute("role", "button");
+        });
+    }
+
+    function answer(card, index, correctIndex) {
+        if (card.classList.contains("answered")) { return; }
+        card.classList.add("answered");
+        var items = optionsOf(card);
+        Array.prototype.forEach.call(items, function (li) {
+            li.classList.remove("selectable");
+            li.removeAttribute("tabindex");
+            li.removeAttribute("role");
+        });
+        if (index === correctIndex) {
+            card.classList.add("correct-card");
+        } else {
+            items[index].classList.add("chosen-wrong");
+        }
+        refresh();
+    }
+
+    Array.prototype.forEach.call(cards, function (card) {
+        var items = optionsOf(card);
+        if (!items.length) { return; }
+        var correctIndex = -1;
+        Array.prototype.forEach.call(items, function (li, i) {
+            if (li.classList.contains("correct-option")) { correctIndex = i; }
+            li.addEventListener("click", function () { answer(card, i, correctIndex); });
+            li.addEventListener("keydown", function (e) {
+                if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    answer(card, i, correctIndex);
+                }
+            });
+        });
+        arm(card);
+    });
+
+    resetBtn.addEventListener("click", function () {
+        Array.prototype.forEach.call(cards, function (card) {
+            card.classList.remove("answered", "correct-card");
+            Array.prototype.forEach.call(optionsOf(card), function (li) {
+                li.classList.remove("chosen-wrong");
+            });
+            arm(card);
+        });
+        document.body.classList.remove("reveal-all");
+        revealBtn.textContent = revealBtn.getAttribute("data-show");
+        refresh();
+    });
+
+    revealBtn.addEventListener("click", function () {
+        var on = document.body.classList.toggle("reveal-all");
+        revealBtn.textContent = revealBtn.getAttribute(on ? "data-hide" : "data-show");
+    });
+
+    refresh();
 })();
 </script>
 
